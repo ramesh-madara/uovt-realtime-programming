@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Processing Models - Interactive Lesson</title>
     
-    <!-- Load Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Load Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom Configuration and Animations -->
     <script>
         tailwind.config = {
             theme: {
@@ -20,7 +16,7 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
                     },
                     keyframes: {
                         fadeInUp: {
@@ -32,118 +28,389 @@
             }
         }
     </script>
-    
     <style>
-        /* Staggered animation delays for cards */
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
+        
+        /* Modal Transitions */
+        .modal-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen text-slate-800 font-sans selection:bg-blue-200">
+<body class="bg-slate-50 text-slate-800 font-sans selection:bg-blue-200 antialiased relative min-h-screen">
 
-    <div class="max-w-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        
-        <!-- Header Section -->
+    <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <header class="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in-up">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold tracking-wide uppercase mb-4">
-                <span>📘</span> Core Computing Concepts
-            </div>
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
                 Data Processing Models
             </h1>
-            <p class="text-lg text-slate-600 leading-relaxed">
-                Discover the three fundamental paradigms of how computing systems handle data, trigger execution, and manage latency. Understanding these models is key to designing modern, efficient software architectures.
+            <p class="text-lg text-slate-600 leading-relaxed mb-4">
+                Explore the three fundamental paradigms of how computing systems handle data, trigger execution, and manage latency.
             </p>
         </header>
 
-        <!-- Main Content: Cards Grid -->
         <main class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <!-- Card 1: Batch Processing -->
-            <article class="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 opacity-0 animate-fade-in-up delay-100 flex flex-col h-full group">
-                <div class="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-500 text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:bg-indigo-100">
-                    📦
-                </div>
-                <h2 class="text-2xl font-bold text-slate-900 mb-3">Batch Processing</h2>
-                <p class="text-slate-600 mb-6 flex-grow">
-                    Accumulates data over a period of time and processes it all at once in a single, large bulk job. Designed for maximum throughput without user intervention.
+            <!-- Batch Processing Card -->
+            <article class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 opacity-0 animate-fade-in-up delay-100 flex flex-col h-full">
+                <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500 text-2xl mb-4">📦</div>
+                <h2 class="text-xl font-bold text-slate-900 mb-2">Batch Processing</h2>
+                <p class="text-slate-600 mb-4 text-sm flex-grow">
+                    Grouped data processed in bulk on a schedule. It is designed for background execution where tasks are queued up and run all at once.
                 </p>
-                <div class="space-y-4 border-t border-slate-100 pt-6 mt-auto">
-                    <div class="flex items-center gap-3">
-                        <span class="text-indigo-500">⏱️</span>
-                        <span class="text-sm font-medium text-slate-700"><strong>Latency:</strong> High (Hours/Days)</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-indigo-500">⚙️</span>
-                        <span class="text-sm font-medium text-slate-700"><strong>Trigger:</strong> Schedule or Volume</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl mt-4">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Examples</span>
-                        <span class="text-sm text-slate-700 font-medium">Payroll calculation, monthly billing statements.</span>
-                    </div>
+                <div class="mb-6 space-y-2 text-sm">
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency:</span> <span class="text-slate-600">High (Hours/Days)</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Throughput:</span> <span class="text-slate-600">High</span></div>
                 </div>
+                <button onclick="openModal('modal-batch')" class="mt-auto w-full py-3 bg-indigo-50 text-indigo-700 font-semibold rounded-xl hover:bg-indigo-100 transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    View Animation
+                </button>
             </article>
 
-            <!-- Card 2: Interactive Processing -->
-            <article class="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 opacity-0 animate-fade-in-up delay-200 flex flex-col h-full group">
-                <div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-500 text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-100">
-                    💬
-                </div>
-                <h2 class="text-2xl font-bold text-slate-900 mb-3">Interactive Processing</h2>
-                <p class="text-slate-600 mb-6 flex-grow">
-                    A continuous conversational loop between a user and the system. It processes commands immediately and requires synchronous, human-scale responsiveness.
+            <!-- Interactive Processing Card -->
+            <article class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 opacity-0 animate-fade-in-up delay-200 flex flex-col h-full">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 text-2xl mb-4">💬</div>
+                <h2 class="text-xl font-bold text-slate-900 mb-2">Interactive Processing</h2>
+                <p class="text-slate-600 mb-4 text-sm flex-grow">
+                    User-driven, synchronous feedback loop. A user issues a command and waits for the system to process it and return a response immediately.
                 </p>
-                <div class="space-y-4 border-t border-slate-100 pt-6 mt-auto">
-                    <div class="flex items-center gap-3">
-                        <span class="text-emerald-500">⏱️</span>
-                        <span class="text-sm font-medium text-slate-700"><strong>Latency:</strong> Low (Seconds)</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-emerald-500">⚙️</span>
-                        <span class="text-sm font-medium text-slate-700"><strong>Trigger:</strong> User Command</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl mt-4">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Examples</span>
-                        <span class="text-sm text-slate-700 font-medium">Web browsing, ATM withdrawals, booking flights.</span>
-                    </div>
+                <div class="mb-6 space-y-2 text-sm">
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency:</span> <span class="text-slate-600">Low (Seconds)</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Trigger:</span> <span class="text-slate-600">User Command</span></div>
                 </div>
+                <button onclick="openModal('modal-interactive')" class="mt-auto w-full py-3 bg-blue-50 text-blue-700 font-semibold rounded-xl hover:bg-blue-100 transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    View Animation
+                </button>
             </article>
 
-            <!-- Card 3: Real-Time Processing -->
-            <article class="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 opacity-0 animate-fade-in-up delay-300 flex flex-col h-full group">
-                <div class="w-14 h-14 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500 text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:bg-rose-100">
-                    ⚡
-                </div>
-                <h2 class="text-2xl font-bold text-slate-900 mb-3">Real-Time Processing</h2>
-                <p class="text-slate-600 mb-6 flex-grow">
-                    Handles continuous streams of data the instant they are generated. The system reacts automatically to events without any human prompting.
+            <!-- Real-Time Processing Card -->
+            <article class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 opacity-0 animate-fade-in-up delay-300 flex flex-col h-full">
+                <div class="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 text-2xl mb-4">⚡</div>
+                <h2 class="text-xl font-bold text-slate-900 mb-2">Real-Time Processing</h2>
+                <p class="text-slate-600 mb-4 text-sm flex-grow">
+                    Event-driven continuous stream processing. System reacts to continuous streams of data the exact instant they are generated.
                 </p>
-                <div class="space-y-4 border-t border-slate-100 pt-6 mt-auto">
-                    <div class="flex items-center gap-3">
-                        <span class="text-rose-500">⏱️</span>
-                        <span class="text-sm font-medium text-slate-700"><strong>Latency:</strong> Ultra-low (Milliseconds)</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-rose-500">⚙️</span>
-                        <span class="text-sm font-medium text-slate-700"><strong>Trigger:</strong> Continuous Events</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl mt-4">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Examples</span>
-                        <span class="text-sm text-slate-700 font-medium">Live fraud detection, HFT stock trading, Radar.</span>
-                    </div>
+                <div class="mb-6 space-y-2 text-sm">
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency:</span> <span class="text-slate-600">Ultra-low (Milliseconds)</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Trigger:</span> <span class="text-slate-600">Continuous Events</span></div>
                 </div>
+                <button onclick="openModal('modal-realtime')" class="mt-auto w-full py-3 bg-rose-50 text-rose-700 font-semibold rounded-xl hover:bg-rose-100 transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    View Animation
+                </button>
             </article>
 
         </main>
-        
-        <footer class="mt-20 text-center opacity-0 animate-fade-in-up delay-300">
-            <p class="text-slate-400 text-sm">
-                Designed for optimal learning • Responsive layout adapts to any screen
-            </p>
-        </footer>
-
     </div>
 
+    <!-- Batch Modal -->
+    <div id="modal-batch" class="fixed inset-0 z-50 hidden items-center justify-center">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm modal-overlay" onclick="closeModal('modal-batch')"></div>
+        <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden modal-content m-4">
+            <div class="flex justify-between items-center p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-slate-900">Batch Processing Visualization</h3>
+                <button onclick="closeModal('modal-batch')" class="text-slate-400 hover:text-slate-700 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-8 bg-slate-50 min-h-[300px] flex flex-col items-center justify-center relative">
+                <div class="text-sm font-medium text-slate-500 mb-6">Data queues up over time, then processes all at once.</div>
+                
+                <div class="flex w-full items-center justify-between px-8 gap-8">
+                    <!-- Queue Area -->
+                    <div class="flex-1 border-2 border-dashed border-indigo-300 rounded-xl p-4 min-h-[120px] bg-indigo-50/50 flex flex-wrap gap-2 items-start content-start relative">
+                        <span class="absolute -top-3 left-4 bg-slate-50 px-2 text-xs font-bold text-indigo-500">Data Queue (Schedule)</span>
+                        <div id="batch-queue" class="flex flex-wrap gap-2 w-full"></div>
+                    </div>
+                    
+                    <div class="text-indigo-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                    </div>
+
+                    <!-- Processor Area -->
+                    <div class="flex-1 border-2 border-solid border-slate-300 rounded-xl p-4 min-h-[120px] bg-white flex flex-wrap gap-2 items-center justify-center relative shadow-inner">
+                        <span class="absolute -top-3 left-4 bg-slate-50 px-2 text-xs font-bold text-slate-500">Processor (Bulk Run)</span>
+                        <div id="batch-processor" class="flex flex-wrap gap-2 w-full items-center justify-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Modal -->
+    <div id="modal-interactive" class="fixed inset-0 z-50 hidden items-center justify-center">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm modal-overlay" onclick="closeModal('modal-interactive')"></div>
+        <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden modal-content m-4">
+            <div class="flex justify-between items-center p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-slate-900">Interactive Processing Visualization</h3>
+                <button onclick="closeModal('modal-interactive')" class="text-slate-400 hover:text-slate-700 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-8 bg-slate-50 min-h-[300px] flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="text-sm font-medium text-slate-500 mb-12">User sends a request and waits synchronously for the response.</div>
+                
+                <div class="w-full flex items-center justify-between px-12 relative">
+                    <!-- User -->
+                    <div id="interactive-user" class="z-10 flex flex-col items-center transition-all duration-300 rounded-full p-2">
+                        <div class="w-16 h-16 bg-blue-100 border-4 border-blue-500 rounded-full flex items-center justify-center text-2xl shadow-lg">👤</div>
+                        <span class="mt-2 text-xs font-bold text-slate-600">Client / User</span>
+                    </div>
+
+                    <!-- Traveling Packet -->
+                    <div id="interactive-dot" class="absolute w-4 h-4 bg-blue-500 rounded-full top-8 shadow-md" style="left: 15%;"></div>
+                    
+                    <!-- Server -->
+                    <div id="interactive-server" class="z-10 flex flex-col items-center transition-all duration-300 rounded-xl p-2">
+                        <div class="w-16 h-16 bg-slate-800 border-4 border-slate-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg">🖥️</div>
+                        <span class="mt-2 text-xs font-bold text-slate-600">Server</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real-time Modal -->
+    <div id="modal-realtime" class="fixed inset-0 z-50 hidden items-center justify-center">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm modal-overlay" onclick="closeModal('modal-realtime')"></div>
+        <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden modal-content m-4">
+            <div class="flex justify-between items-center p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-slate-900">Real-Time Processing Visualization</h3>
+                <button onclick="closeModal('modal-realtime')" class="text-slate-400 hover:text-slate-700 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-8 bg-slate-50 min-h-[300px] flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="text-sm font-medium text-slate-500 mb-12">Continuous stream of events processed instantly as they arrive.</div>
+                
+                <div id="realtime-container" class="w-full h-32 relative flex items-center justify-center bg-slate-200/50 rounded-full overflow-hidden border border-slate-200">
+                    <!-- Stream background guide -->
+                    <div class="absolute w-full h-1 bg-slate-300/50 top-1/2 -translate-y-1/2"></div>
+                    
+                    <!-- Real-time Processor Block -->
+                    <div id="rt-processor-box" class="absolute z-10 w-20 h-20 bg-white border-4 border-rose-500 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-75">
+                        <div class="text-2xl animate-spin-slow">⚙️</div>
+                    </div>
+                    <span class="absolute top-2 text-xs font-bold text-slate-500 bg-slate-50 px-2 rounded-full">Stream Processor</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal visibility logic
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Trigger transition after a tiny delay for CSS to apply
+            setTimeout(() => {
+                modal.querySelector('.modal-overlay').classList.add('show');
+            }, 10);
+
+            // Start appropriate animation
+            if(id === 'modal-batch') startBatch();
+            if(id === 'modal-interactive') startInteractive();
+            if(id === 'modal-realtime') startRealtime();
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.querySelector('.modal-overlay').classList.remove('show');
+            
+            // Wait for transition before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+
+            // Cleanup animations to save CPU
+            stopAllAnimations();
+        }
+
+        // --- Animation Timers & Logic ---
+        let batchInterval, batchProcessTimeout;
+        let interactiveTimeout1, interactiveTimeout2, interactiveTimeout3, interactiveTimeout4;
+        let realtimeInterval;
+
+        function stopAllAnimations() {
+            clearInterval(batchInterval);
+            clearTimeout(batchProcessTimeout);
+            clearTimeout(interactiveTimeout1);
+            clearTimeout(interactiveTimeout2);
+            clearTimeout(interactiveTimeout3);
+            clearTimeout(interactiveTimeout4);
+            clearInterval(realtimeInterval);
+
+            // Reset Batch
+            document.getElementById('batch-queue').innerHTML = '';
+            document.getElementById('batch-processor').innerHTML = '';
+            
+            // Reset Realtime
+            const rtContainer = document.getElementById('realtime-container');
+            if(rtContainer) {
+                rtContainer.querySelectorAll('.data-node').forEach(node => node.remove());
+            }
+        }
+
+        function startBatch() {
+            const queue = document.getElementById('batch-queue');
+            const processor = document.getElementById('batch-processor');
+            let itemsInQueue = [];
+
+            batchInterval = setInterval(() => {
+                // Add item to queue
+                if(itemsInQueue.length < 6) {
+                    let item = document.createElement('div');
+                    item.className = 'w-5 h-5 bg-indigo-400 rounded shadow-sm shrink-0 scale-0 transition-transform duration-300';
+                    queue.appendChild(item);
+                    // Animate in
+                    setTimeout(() => item.classList.remove('scale-0'), 50);
+                    itemsInQueue.push(item);
+                } else {
+                    // Trigger Batch Process
+                    const itemsToProcess = [...itemsInQueue];
+                    itemsInQueue = []; // Reset queue for new items
+                    queue.innerHTML = ''; // Clear visual queue
+                    
+                    itemsToProcess.forEach(item => {
+                        item.className = 'w-5 h-5 bg-indigo-500 rounded shadow-sm shrink-0';
+                        processor.appendChild(item);
+                    });
+
+                    // Simulate processing delay
+                    batchProcessTimeout = setTimeout(() => {
+                        itemsToProcess.forEach(item => {
+                            item.classList.replace('bg-indigo-500', 'bg-green-500');
+                        });
+                        
+                        // Clear processor after done
+                        setTimeout(() => {
+                            processor.innerHTML = '';
+                        }, 800);
+                    }, 500);
+                }
+            }, 600); // New item every 600ms
+        }
+
+        function startInteractive() {
+            const dot = document.getElementById('interactive-dot');
+            const server = document.getElementById('interactive-server');
+            const user = document.getElementById('interactive-user');
+            
+            function cycle() {
+                // 1. Reset position to User
+                dot.style.transition = 'none';
+                dot.style.left = '15%'; // Match User center roughly
+                dot.classList.replace('bg-green-500', 'bg-blue-500');
+                dot.style.opacity = '1';
+                
+                // 2. Animate Request to Server
+                interactiveTimeout1 = setTimeout(() => {
+                    dot.style.transition = 'left 0.6s ease-in-out';
+                    dot.style.left = '82%'; // Match Server center roughly
+                    
+                    // 3. Server Processing (Thinking)
+                    interactiveTimeout2 = setTimeout(() => {
+                        dot.style.opacity = '0'; // Hide dot inside server
+                        server.classList.add('ring-4', 'ring-blue-300', 'bg-slate-700'); 
+                        
+                        // 4. Server responds
+                        interactiveTimeout3 = setTimeout(() => {
+                            server.classList.remove('ring-4', 'ring-blue-300', 'bg-slate-700');
+                            dot.style.opacity = '1';
+                            dot.classList.replace('bg-blue-500', 'bg-green-500'); // Green for success response
+                            dot.style.left = '15%'; // Animate back
+                            
+                            // 5. User receives
+                            interactiveTimeout4 = setTimeout(() => {
+                                dot.style.opacity = '0';
+                                user.classList.add('ring-4', 'ring-green-300', 'scale-105');
+                                setTimeout(() => {
+                                    user.classList.remove('ring-4', 'ring-green-300', 'scale-105');
+                                    // Start next cycle
+                                    setTimeout(cycle, 1000); 
+                                }, 300);
+                            }, 600); // Time to travel back
+                        }, 800); // Server processing time
+                    }, 600); // Time to travel forward
+                }, 500); // Initial pause
+            }
+            cycle();
+        }
+
+        function startRealtime() {
+            const container = document.getElementById('realtime-container');
+            const processor = document.getElementById('rt-processor-box');
+            
+            realtimeInterval = setInterval(() => {
+                // Create data node
+                let dot = document.createElement('div');
+                dot.className = 'data-node absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full shadow-md z-0 ease-linear';
+                dot.classList.add('bg-rose-500');
+                
+                // Starting position (left edge)
+                dot.style.left = '-5%';
+                // Fixed duration for smooth continuous flow
+                dot.style.transition = 'left 2.5s linear, background-color 0.2s'; 
+                container.appendChild(dot);
+                
+                // Start movement in next frame
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        dot.style.left = '105%';
+                    });
+                });
+                
+                // Check position to trigger processor hit and color change
+                let checkInterval = setInterval(() => {
+                    if(!container.contains(dot)) {
+                        clearInterval(checkInterval);
+                        return;
+                    }
+                    
+                    // Roughly halfway point (45-55%)
+                    let rect = dot.getBoundingClientRect();
+                    let containerRect = container.getBoundingClientRect();
+                    let relativeX = rect.left - containerRect.left;
+                    let percentage = (relativeX / containerRect.width) * 100;
+                    
+                    if(percentage > 48 && dot.classList.contains('bg-rose-500')) {
+                        dot.classList.replace('bg-rose-500', 'bg-emerald-400');
+                        // Pulse processor
+                        processor.classList.add('scale-110', 'border-emerald-500');
+                        processor.classList.remove('border-rose-500');
+                        setTimeout(() => {
+                            processor.classList.remove('scale-110', 'border-emerald-500');
+                            processor.classList.add('border-rose-500');
+                        }, 100);
+                    }
+                    
+                    // Clean up off-screen
+                    if(percentage > 102) {
+                        dot.remove();
+                        clearInterval(checkInterval);
+                    }
+                }, 50);
+                
+            }, 400); // Spawn rapidly for stream effect
+        }
+    </script>
 </body>
 </html>

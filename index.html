@@ -29,6 +29,71 @@
         }
     </script>
     <style>
+        .sidebar {
+            position: sticky;
+            top: 0;
+            width: 16rem;
+            height: 100vh;
+            min-height: 100vh;
+            overflow: hidden;
+            align-self: flex-start;
+            transition: width 220ms ease;
+        }
+        .sidebar.is-collapsed {
+            width: 4.5rem;
+        }
+        .sidebar.is-collapsed .sidebar-label,
+        .sidebar.is-collapsed .sidebar-brand {
+            display: none;
+        }
+        .sidebar-link {
+            color: #cbd5e1;
+            border-left: 2px solid transparent;
+        }
+        .sidebar-link:hover,
+        .sidebar-link[aria-current="page"] {
+            background-color: #1e293b;
+            color: #fff;
+        }
+        .sidebar-link[aria-current="page"] {
+            border-left-color: #34d399;
+        }
+        #event-driven-loop #loop-data-dot {
+            transform: translate(-50%, -50%);
+            transition: left 0.8s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        #event-driven-loop .loop-node {
+            transition: transform 300ms ease;
+        }
+        #event-driven-loop .loop-stage:hover .loop-node,
+        #event-driven-loop .loop-stage:focus-visible .loop-node {
+            transform: scale(1.08);
+        }
+        #event-driven-loop .loop-node.node-active {
+            animation: loop-pulse 500ms ease-out;
+        }
+        @keyframes loop-pulse {
+            50% { transform: scale(1.1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #event-driven-loop #loop-data-dot,
+            #event-driven-loop .loop-node {
+                transition: none;
+                animation: none;
+            }
+        }
+        @media (max-width: 640px) {
+            .sidebar {
+                width: 4.5rem;
+            }
+            .sidebar.is-expanded {
+                width: 16rem;
+            }
+            .sidebar:not(.is-expanded) .sidebar-label,
+            .sidebar:not(.is-expanded) .sidebar-brand {
+                display: none;
+            }
+        }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
@@ -52,8 +117,30 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans selection:bg-blue-200 antialiased relative min-h-screen">
 
-    <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <header class="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in-up">
+    <div class="min-h-screen flex">
+        <aside id="sidebar" class="sidebar shrink-0 bg-slate-900 text-slate-100 flex flex-col min-h-screen">
+            <div class="h-16 px-4 flex items-center gap-3 border-b border-slate-700">
+                <div class="w-8 h-8 shrink-0 rounded-lg bg-emerald-400 text-slate-950 flex items-center justify-center font-bold">R</div>
+                <span class="sidebar-brand font-semibold whitespace-nowrap">Realtime Lab</span>
+                <button id="sidebar-toggle" type="button" class="ml-auto p-2 rounded-md text-slate-300 hover:bg-slate-800 hover:text-white transition-colors" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar-navigation" title="Collapse sidebar">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+            </div>
+            <nav id="sidebar-navigation" aria-label="Main navigation" class="p-3">
+                <a href="#processing-models" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-md" title="Processing models">
+                    <svg class="w-5 h-5 shrink-0 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Processing models</span>
+                </a>
+                <a href="#event-driven-loop" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Event-driven loop">
+                    <svg class="w-5 h-5 shrink-0 text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Event-driven loop</span>
+                </a>
+            </nav>
+        </aside>
+
+        <div class="flex-1 min-w-0">
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <header id="processing-models" class="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in-up">
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
                 Data Processing Models
             </h1>
@@ -116,6 +203,58 @@
             </article>
 
         </main>
+        </div>
+
+        <section id="event-driven-loop" class="bg-slate-900 text-white border-y border-slate-800 py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <header class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight mb-2">The Event-Driven Loop</h2>
+                    <p class="text-slate-400">Hover over or focus a stage to learn about its role.</p>
+                </header>
+
+                <div id="loop-pipeline" class="relative w-full py-10 flex justify-between items-center gap-1 sm:gap-4">
+                    <div class="absolute top-1/2 left-0 w-full h-2 bg-slate-700 -translate-y-1/2 rounded-full z-0" aria-hidden="true"></div>
+                    <div id="loop-data-dot" class="absolute top-1/2 left-0 w-6 h-6 rounded-full bg-white z-20 shadow-[0_0_15px_rgba(255,255,255,0.8)]" aria-hidden="true"></div>
+
+                    <button type="button" class="loop-stage relative z-10 flex-1 min-w-0 flex flex-col items-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" data-index="0" data-title="Stimulus (The Trigger)" data-desc="An external event occurs that changes the state of the environment. The system does not control this. Example: A user clicks a button, a sensor registers movement, or a market price fluctuates." data-color="orange" aria-label="Stimulus, the trigger">
+                        <span id="loop-node-0" class="loop-node w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border-4 border-slate-800">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </span>
+                        <span class="mt-4 text-xs sm:text-sm font-semibold text-orange-400">Stimulus</span>
+                    </button>
+
+                    <button type="button" class="loop-stage relative z-10 flex-1 min-w-0 flex flex-col items-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" data-index="1" data-title="Detect (Ingestion)" data-desc="The system captures the stimulus and translates it into a digital format. A dedicated listener is always waiting for this event. Example: An API endpoint receives a JSON payload or hardware converts an analog signal to digital." data-color="purple" aria-label="Detect, ingestion">
+                        <span id="loop-node-1" class="loop-node w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg border-4 border-slate-800">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </span>
+                        <span class="mt-4 text-xs sm:text-sm font-semibold text-purple-400">Detect</span>
+                    </button>
+
+                    <button type="button" class="loop-stage relative z-10 flex-1 min-w-0 flex flex-col items-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" data-index="2" data-title="Compute (Processing)" data-desc="Core logic executes. The system analyzes the ingested data against programmed rules, databases, or AI models to decide the next action. Example: Checking user balance, running a prediction algorithm, or transforming data." data-color="blue" aria-label="Compute, processing">
+                        <span id="loop-node-2" class="loop-node w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg border-4 border-slate-800">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </span>
+                        <span class="mt-4 text-xs sm:text-sm font-semibold text-blue-400">Compute</span>
+                    </button>
+
+                    <button type="button" class="loop-stage relative z-10 flex-1 min-w-0 flex flex-col items-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" data-index="3" data-title="Response (Action)" data-desc="The system executes a tangible output based on the computation, successfully closing the loop. Example: Updating the user interface, adjusting a physical motor, or sending an email receipt." data-color="green" aria-label="Response, action">
+                        <span id="loop-node-3" class="loop-node w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg border-4 border-slate-800">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </span>
+                        <span class="mt-4 text-xs sm:text-sm font-semibold text-green-400">Response</span>
+                    </button>
+                </div>
+
+                <div class="mt-10 bg-slate-950/70 border border-slate-700 rounded-xl p-6 min-h-[140px] relative overflow-hidden">
+                    <div id="loop-info-bg" class="absolute inset-0 opacity-10 transition-colors duration-500 pointer-events-none" aria-hidden="true"></div>
+                    <div class="relative z-10">
+                        <h3 id="loop-info-title" class="text-xl font-bold text-white mb-2 transition-colors duration-300">Live Data Processing</h3>
+                        <p id="loop-info-desc" class="text-slate-400 leading-relaxed">Watch the data flow through the system. Focus or hover over any stage to pause the animation and learn about its role in the event-driven loop.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
     </div>
 
     <!-- Batch Modal -->
@@ -213,6 +352,120 @@
     </div>
 
     <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+
+        function updateSidebar(expanded) {
+            const collapsed = !expanded;
+            sidebar.classList.toggle('is-collapsed', collapsed);
+            sidebar.classList.toggle('is-expanded', expanded);
+            sidebarToggle.setAttribute('aria-expanded', String(expanded));
+            sidebarToggle.setAttribute('aria-label', expanded ? 'Collapse sidebar' : 'Expand sidebar');
+            sidebarToggle.title = expanded ? 'Collapse sidebar' : 'Expand sidebar';
+        }
+
+        sidebarToggle.addEventListener('click', () => {
+            updateSidebar(sidebarToggle.getAttribute('aria-expanded') !== 'true');
+        });
+        if (window.matchMedia('(max-width: 640px)').matches) updateSidebar(false);
+
+        const sidebarLinks = sidebar.querySelectorAll('.sidebar-link');
+        function updateSidebarNavigation() {
+            const currentHash = window.location.hash || '#processing-models';
+            sidebarLinks.forEach(link => {
+                if (link.getAttribute('href') === currentHash) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+        window.addEventListener('hashchange', updateSidebarNavigation);
+        updateSidebarNavigation();
+
+        const loopSection = document.getElementById('event-driven-loop');
+        const loopNodes = loopSection.querySelectorAll('.loop-stage');
+        const loopPipeline = document.getElementById('loop-pipeline');
+        const loopDot = document.getElementById('loop-data-dot');
+        const loopInfoTitle = document.getElementById('loop-info-title');
+        const loopInfoDesc = document.getElementById('loop-info-desc');
+        const loopInfoBackground = document.getElementById('loop-info-bg');
+        const loopColors = {
+            orange: { dot: '#fb923c', shadow: '0 0 20px rgba(249, 115, 22, 0.8)', text: '#fb923c', gradient: 'rgba(249, 115, 22, 0.2)' },
+            purple: { dot: '#c084fc', shadow: '0 0 20px rgba(168, 85, 247, 0.8)', text: '#c084fc', gradient: 'rgba(168, 85, 247, 0.2)' },
+            blue: { dot: '#60a5fa', shadow: '0 0 20px rgba(59, 130, 246, 0.8)', text: '#60a5fa', gradient: 'rgba(59, 130, 246, 0.2)' },
+            green: { dot: '#4ade80', shadow: '0 0 20px rgba(34, 197, 94, 0.8)', text: '#4ade80', gradient: 'rgba(34, 197, 94, 0.2)' },
+            default: { dot: '#fff', shadow: '0 0 15px rgba(255, 255, 255, 0.8)', text: '#fff', gradient: 'transparent' }
+        };
+        const defaultLoopDescription = 'Watch the data flow through the system. Focus or hover over any stage to pause the animation and learn about its role in the event-driven loop.';
+        let currentLoopStage = 0;
+        let loopPaused = false;
+
+        function updateLoopDot(index, colorKey) {
+            const node = loopNodes[index];
+            const nodeBounds = node.getBoundingClientRect();
+            const pipelineBounds = loopPipeline.getBoundingClientRect();
+            const theme = loopColors[colorKey] || loopColors.default;
+            loopDot.style.left = `${nodeBounds.left - pipelineBounds.left + nodeBounds.width / 2}px`;
+            loopDot.style.backgroundColor = theme.dot;
+            loopDot.style.boxShadow = theme.shadow;
+            const nodeGraphic = document.getElementById(`loop-node-${index}`);
+            nodeGraphic.classList.remove('node-active');
+            void nodeGraphic.offsetWidth;
+            nodeGraphic.classList.add('node-active');
+        }
+
+        function showLoopStage(node) {
+            const theme = loopColors[node.dataset.color];
+            loopInfoTitle.textContent = node.dataset.title;
+            loopInfoTitle.style.color = theme.text;
+            loopInfoDesc.textContent = node.dataset.desc;
+            loopInfoBackground.style.background = `linear-gradient(to right, ${theme.gradient}, transparent)`;
+            const index = Number(node.dataset.index);
+            currentLoopStage = index;
+            updateLoopDot(index, node.dataset.color);
+        }
+
+        function resetLoopInfo() {
+            loopInfoTitle.textContent = 'Live Data Processing';
+            loopInfoTitle.style.color = '#fff';
+            loopInfoDesc.textContent = defaultLoopDescription;
+            loopInfoBackground.style.background = 'linear-gradient(to right, transparent, transparent)';
+        }
+
+        function resumeLoop() {
+            loopPaused = false;
+            resetLoopInfo();
+        }
+
+        loopNodes.forEach(node => {
+            const activateStage = () => {
+                loopPaused = true;
+                showLoopStage(node);
+            };
+            node.addEventListener('mouseenter', activateStage);
+            node.addEventListener('focus', activateStage);
+            node.addEventListener('click', activateStage);
+            node.addEventListener('mouseleave', () => {
+                if (document.activeElement !== node) resumeLoop();
+            });
+            node.addEventListener('blur', () => {
+                if (!node.matches(':hover')) resumeLoop();
+            });
+        });
+
+        updateLoopDot(0, loopNodes[0].dataset.color);
+        currentLoopStage = 1;
+        setInterval(() => {
+            if (loopPaused) return;
+            const node = loopNodes[currentLoopStage];
+            updateLoopDot(currentLoopStage, node.dataset.color);
+            currentLoopStage = (currentLoopStage + 1) % loopNodes.length;
+        }, 1200);
+        window.addEventListener('resize', () => {
+            updateLoopDot(currentLoopStage, loopPaused ? loopNodes[currentLoopStage].dataset.color : 'default');
+        });
+
         // Modal visibility logic
         function openModal(id) {
             const modal = document.getElementById(id);

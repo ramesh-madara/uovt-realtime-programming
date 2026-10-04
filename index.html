@@ -7,6 +7,9 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -71,6 +74,282 @@
         }
         #event-driven-loop .loop-node.node-active {
             animation: loop-pulse 500ms ease-out;
+        }
+        #key-timing-terms {
+            background: #fff;
+            color: #2b1728;
+            font-family: 'Courier Prime', monospace;
+            -webkit-font-smoothing: antialiased;
+        }
+        #key-timing-terms h2,
+        #key-timing-terms h3,
+        #key-timing-modal h2,
+        #key-timing-modal h3 {
+            font-family: Merriweather, serif;
+        }
+        #key-timing-terms .scout-card {
+            background-color: #fff;
+            background-image: radial-gradient(#ffc185 1px, transparent 1px);
+            background-size: 20px 20px;
+            transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+        }
+        #key-timing-terms .scout-card:hover,
+        #key-timing-terms .scout-card:focus-visible {
+            transform: translate(-2px, -2px);
+            box-shadow: 10px 10px 0 #2b1728;
+            background-color: #fdfbf7;
+        }
+        #key-timing-terms .merit-badge {
+            outline: 2px dashed #cc4240;
+            outline-offset: -4px;
+        }
+        #key-timing-modal {
+            z-index: 60;
+            backdrop-filter: blur(4px);
+            background-color: rgba(43, 23, 40, 0.7);
+            transition: opacity 300ms ease;
+        }
+        #key-timing-modal .postcard {
+            background-color: #fdfbf7;
+            background-image: linear-gradient(to right, rgba(43, 23, 40, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(43, 23, 40, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            box-shadow: 12px 12px 0 #2b1728;
+            transition: transform 300ms ease;
+        }
+        #key-timing-modal .stamp {
+            border: 2px dashed #cc4240;
+            padding: 4px;
+            background: #fff;
+            transform: rotate(3deg);
+        }
+        #key-timing-modal .stamp-inner {
+            width: 48px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #cc4240;
+            background: #ffc185;
+            color: #cc4240;
+            font-size: 1.5rem;
+        }
+        #key-timing-modal .address-lines {
+            background-image: repeating-linear-gradient(to bottom, transparent, transparent 31px, #2b1728 32px);
+            line-height: 32px;
+        }
+        #key-timing-modal canvas {
+            image-rendering: pixelated;
+        }
+        #worked-deadline-example {
+            background-color: #fdfbf7;
+            background-image: linear-gradient(to right, rgba(204, 66, 64, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(204, 66, 64, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2b1728;
+            font-family: 'Courier Prime', monospace;
+            -webkit-font-smoothing: antialiased;
+        }
+        #worked-deadline-example h2,
+        #worked-deadline-example h3 {
+            font-family: Merriweather, serif;
+        }
+        #worked-deadline-example .deadline-badge {
+            outline: 2px dashed #cc4240;
+            outline-offset: -4px;
+        }
+        #worked-deadline-example .deadline-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -24px;
+            z-index: 10;
+            transform: translateY(-50%);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 14px solid #2b1728;
+        }
+        #worked-deadline-example canvas {
+            image-rendering: pixelated;
+        }
+        #task-timing-types {
+            background-color: #f9f6f0;
+            background-image: linear-gradient(to right, rgba(113, 33, 55, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(113, 33, 55, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2b1728;
+            font-family: 'Courier Prime', monospace;
+            -webkit-font-smoothing: antialiased;
+        }
+        #task-timing-types h2,
+        #task-timing-types h3 {
+            font-family: Merriweather, serif;
+        }
+        #task-timing-types .scout-table {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        #task-timing-types .scout-table-head {
+            display: none;
+        }
+        #task-timing-types .scout-table-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            overflow: hidden;
+            border: 2px solid #712137;
+            box-shadow: 3px 3px 0 #2b1728;
+        }
+        #task-timing-types .scout-table-cell {
+            padding: 1rem;
+        }
+        #task-timing-types .scout-table-row-title {
+            padding: 0.75rem;
+            background: #712137;
+            color: #f9f6f0;
+            font-family: Merriweather, serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+        #task-timing-types .canvas-container {
+            background-image: repeating-linear-gradient(45deg, rgba(43, 23, 40, 0.03) 0, rgba(43, 23, 40, 0.03) 2px, transparent 2px, transparent 8px);
+        }
+        #task-timing-types canvas {
+            image-rendering: pixelated;
+        }
+        @media (min-width: 1024px) {
+            #task-timing-types .scout-table {
+                grid-template-columns: 1.2fr 2.5fr 2.5fr 3fr;
+                gap: 0;
+            }
+            #task-timing-types .scout-table-head,
+            #task-timing-types .scout-table-row {
+                display: contents;
+            }
+            #task-timing-types .scout-table-row-title {
+                display: none;
+            }
+            #task-timing-types .scout-table-head > div {
+                padding: 1rem;
+                background: #712137;
+                color: #f9f6f0;
+                font-family: Merriweather, serif;
+                font-size: 1.125rem;
+                font-weight: 700;
+                border-right: 2px solid #f9f6f0;
+            }
+            #task-timing-types .scout-table-head > div:last-child {
+                border-right: 0;
+            }
+            #task-timing-types .scout-table-row:nth-of-type(odd) .scout-table-cell {
+                background-color: rgba(255, 193, 133, 0.12);
+            }
+            #task-timing-types .scout-table-row:not(:last-child) .scout-table-cell {
+                border-bottom: 2px dashed #712137;
+            }
+            #task-timing-types .scout-table-row .scout-table-cell:not(:last-child) {
+                border-right: 2px solid #712137;
+            }
+        }
+        #airbag-deadline {
+            background-color: #fff;
+            background-image: linear-gradient(to right, rgba(43, 23, 40, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(43, 23, 40, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #2b1728;
+            font-family: 'Courier Prime', monospace;
+            -webkit-font-smoothing: antialiased;
+        }
+        #airbag-deadline h2,
+        #airbag-deadline h3 {
+            font-family: Merriweather, serif;
+        }
+        #airbag-deadline .airbag-scout-table {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        #airbag-deadline .airbag-header-row {
+            display: none;
+        }
+        #airbag-deadline .airbag-scout-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: #fff;
+            border: 2px solid #712137;
+            border-radius: 4px;
+            box-shadow: 3px 3px 0 #2b1728;
+        }
+        #airbag-deadline .airbag-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #airbag-deadline .airbag-mobile-label {
+            width: 80px;
+            flex: 0 0 80px;
+            color: #712137;
+            font-weight: 700;
+        }
+        #airbag-deadline .merit-badge {
+            outline: 2px dashed #cc4240;
+            outline-offset: -4px;
+        }
+        #airbag-deadline .airbag-canvas-container {
+            background-image: repeating-linear-gradient(45deg, rgba(43, 23, 40, 0.03) 0, rgba(43, 23, 40, 0.03) 4px, transparent 4px, transparent 12px);
+        }
+        #airbag-deadline canvas {
+            image-rendering: pixelated;
+            width: 100%;
+            height: auto;
+            max-width: 220px;
+            display: block;
+            margin: 0 auto;
+        }
+        #airbag-deadline .warning-box {
+            border: 3px dashed #cc4240;
+        }
+        @media (min-width: 768px) {
+            #airbag-deadline .airbag-scout-table {
+                grid-template-columns: 100px 140px minmax(0, 1fr) 220px;
+                gap: 0;
+            }
+            #airbag-deadline .airbag-header-row,
+            #airbag-deadline .airbag-scout-row {
+                display: contents;
+            }
+            #airbag-deadline .airbag-cell {
+                min-width: 0;
+                padding: 1rem;
+                border-right: 2px solid #712137;
+                border-bottom: 2px dashed #712137;
+            }
+            #airbag-deadline .airbag-header-row .airbag-cell {
+                background: #712137;
+                color: #fdfbf7;
+                font-family: Merriweather, serif;
+                font-weight: 700;
+                font-size: 1.125rem;
+            }
+            #airbag-deadline .airbag-scout-row:nth-of-type(odd) .airbag-cell {
+                background-color: rgba(255, 193, 133, 0.2);
+            }
+            #airbag-deadline .airbag-scout-row:last-child .airbag-cell {
+                border-bottom: 0;
+            }
+            #airbag-deadline .airbag-cell:last-child {
+                border-right: 0;
+            }
+            #airbag-deadline .airbag-mobile-label {
+                display: none;
+            }
+            #airbag-deadline .airbag-canvas-cell {
+                justify-content: center;
+                padding: 0.5rem;
+            }
+        }
+        @media (max-width: 1023px) {
+            #worked-deadline-example .deadline-step:not(:last-child)::after {
+                display: none;
+            }
         }
         @keyframes loop-pulse {
             50% { transform: scale(1.1); }
@@ -139,6 +418,22 @@
                     <svg class="w-5 h-5 shrink-0 text-lime-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span class="sidebar-label whitespace-nowrap">Real-time guarantees</span>
                 </a>
+                <a href="#key-timing-terms" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Key timing terms">
+                    <svg class="w-5 h-5 shrink-0 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2m5-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Key timing terms</span>
+                </a>
+                <a href="#worked-deadline-example" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Worked deadline example">
+                    <svg class="w-5 h-5 shrink-0 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.042-.133-2.053-.382-3.016z"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Deadline example</span>
+                </a>
+                <a href="#task-timing-types" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Task timing types">
+                    <svg class="w-5 h-5 shrink-0 text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Task timing types</span>
+                </a>
+                <a href="#airbag-deadline" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Airbag deadline example">
+                    <svg class="w-5 h-5 shrink-0 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01M10.3 3.86l-8.1 14.02A2 2 0 003.93 21h16.14a2 2 0 001.73-3.12l-8.1-14.02a2 2 0 00-3.46 0z"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Airbag deadline</span>
+                </a>
             </nav>
         </aside>
 
@@ -148,7 +443,7 @@
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
                 Data Processing Models
             </h1>
-            <h6>4th October 2026</h6>
+            <p>4th October 2026</p>
             <p class="text-lg text-slate-600 leading-relaxed mb-4">
                 Explore the three fundamental paradigms of how computing systems handle data, trigger execution, and manage latency.
             </p>
@@ -304,6 +599,196 @@
                 </div>
             </div>
         </section>
+
+        <section id="key-timing-terms" aria-labelledby="key-timing-title" class="w-full px-4 py-12 md:px-8 lg:px-12">
+            <main class="max-w-6xl mx-auto relative z-10">
+                <header class="mb-14 border-b-4 border-double border-[#2b1728] pb-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <p class="font-serif text-[#712137] font-bold uppercase tracking-widest text-xs md:text-sm mb-3">Field Manual &mdash; Sec. 4</p>
+                        <h2 id="key-timing-title" class="font-serif text-4xl md:text-5xl lg:text-6xl font-black text-[#2b1728]">Key Timing Terms</h2>
+                        <p class="mt-4 max-w-2xl text-base md:text-lg text-[#712137]">Real-time systems demand predictability. Select any term to view its animated field demonstration.</p>
+                    </div>
+                    <div class="hidden md:flex w-24 h-24 rounded-full border-4 border-[#2b1728] items-center justify-center bg-[#ffc185] text-[#2b1728] font-serif font-black text-2xl shrink-0 relative overflow-hidden shadow-[6px_6px_0px_#2B1728]" aria-label="Time sync field insignia">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center -rotate-12" aria-hidden="true">
+                            <span>TIME</span>
+                            <span class="text-[#cc4240]">SYNC</span>
+                        </div>
+                    </div>
+                </header>
+                <div id="timing-term-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </main>
+        </section>
+
+        <section id="worked-deadline-example" aria-labelledby="worked-deadline-title" class="w-full p-4 md:p-8 lg:p-12">
+            <div class="max-w-6xl mx-auto relative z-10 bg-white/90 backdrop-blur-sm p-6 md:p-10 border-4 border-[#2b1728] shadow-[8px_8px_0px_#2B1728]">
+                <header class="mb-10 border-b-4 border-double border-[#2b1728] pb-6">
+                    <p class="text-[#cc4240] font-bold uppercase tracking-widest text-xs md:text-sm mb-2">Field Exercise No. 1</p>
+                    <h2 id="worked-deadline-title" class="text-3xl md:text-4xl lg:text-5xl font-black text-[#2b1728] tracking-tight mb-4">Worked example: is the deadline met?</h2>
+                    <div class="bg-[#ffc185]/30 inline-block px-4 py-2 border-l-4 border-[#712137]">
+                        <p class="text-[#712137] text-base md:text-lg font-bold">A sensor task is released at t = 100 ms; its relative deadline is 10 ms.</p>
+                    </div>
+                </header>
+
+                <ol class="flex flex-col lg:flex-row gap-6 lg:gap-4 xl:gap-8 items-stretch justify-between mb-8" aria-label="Deadline calculation steps">
+                    <li class="deadline-step flex-1 bg-white border-2 border-[#2b1728] shadow-[4px_4px_0px_#2B1728] p-5 relative flex flex-col">
+                        <header class="flex flex-col items-center mb-4 border-b-2 border-dashed border-[#2b1728]/30 pb-4">
+                            <span class="deadline-badge w-14 h-14 rounded-full bg-[#ffc185] flex items-center justify-center font-bold text-xl text-[#2b1728] mb-3 shadow-sm">100</span>
+                            <h3 class="text-xl font-bold text-[#2b1728] text-center">Released</h3>
+                        </header>
+                        <p class="text-[#712137] text-sm leading-relaxed text-center flex-grow">The sensor interrupt arrives. The task is ready to run at t = 100 ms.</p>
+                    </li>
+                    <li class="deadline-step flex-1 bg-white border-2 border-[#2b1728] shadow-[4px_4px_0px_#2B1728] p-5 relative flex flex-col">
+                        <header class="flex flex-col items-center mb-4 border-b-2 border-dashed border-[#2b1728]/30 pb-4">
+                            <span class="deadline-badge w-14 h-14 rounded-full bg-[#ffc185] flex items-center justify-center font-bold text-xl text-[#2b1728] mb-3 shadow-sm">103</span>
+                            <h3 class="text-xl font-bold text-[#2b1728] text-center">Starts</h3>
+                        </header>
+                        <p class="text-[#712137] text-sm leading-relaxed text-center flex-grow">Another task was using the CPU, so it starts 3 ms later (waiting time 3 ms).</p>
+                    </li>
+                    <li class="deadline-step flex-1 bg-white border-2 border-[#2b1728] shadow-[4px_4px_0px_#2B1728] p-5 relative flex flex-col">
+                        <header class="flex flex-col items-center mb-4 border-b-2 border-dashed border-[#2b1728]/30 pb-4">
+                            <span class="deadline-badge w-14 h-14 rounded-full bg-[#ffc185] flex items-center justify-center font-bold text-xl text-[#2b1728] mb-3 shadow-sm">109</span>
+                            <h3 class="text-xl font-bold text-[#2b1728] text-center">Finishes</h3>
+                        </header>
+                        <p class="text-[#712137] text-sm leading-relaxed text-center flex-grow">It needs 6 ms of CPU time, so it finishes at t = 109 ms.</p>
+                    </li>
+                    <li class="flex-1 bg-[#2b1728] border-2 border-[#2b1728] shadow-[4px_4px_0px_#2B1728] p-5 flex flex-col">
+                        <header class="flex flex-col items-center mb-4 border-b-2 border-dashed border-[#ffc185]/30 pb-4">
+                            <span class="deadline-badge w-14 h-14 rounded-full bg-[#f08a6a] flex items-center justify-center font-bold text-xl text-[#2b1728] mb-3 shadow-sm">110</span>
+                            <h3 class="text-xl font-bold text-[#ffc185] text-center">Deadline</h3>
+                        </header>
+                        <p class="text-[#fdfbf7] text-sm leading-relaxed text-center flex-grow font-bold">Absolute deadline = 100 + 10 = 110 ms.<br><br><span class="bg-[#712137] px-1 py-0.5 text-[#ffc185] inline-block mt-1">Response time = 9 ms &le; 10 ms: met.</span></p>
+                    </li>
+                </ol>
+
+                <aside class="border-2 border-dashed border-[#712137] bg-[#ffc185]/20 p-6 relative overflow-hidden mb-12">
+                    <div class="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#cc4240] shadow-sm border border-[#2b1728]" aria-hidden="true"></div>
+                    <h3 class="text-[#cc4240] font-bold uppercase tracking-widest text-sm mb-2 mt-2">Field Observation Note</h3>
+                    <p class="text-[#2b1728] text-base md:text-lg font-bold leading-relaxed">If the other task delays it by <span class="text-[#cc4240] border-b-2 border-dashed border-[#cc4240] px-1">5 ms instead of 3</span>, the response time becomes 11 ms and the deadline is missed, without any change to this task's own code.</p>
+                </aside>
+
+                <section aria-labelledby="deadline-scenario-title" class="border-t-4 border-double border-[#2b1728] pt-10">
+                    <header class="mb-6">
+                        <h3 id="deadline-scenario-title" class="text-2xl md:text-3xl font-bold text-[#712137] mb-2">Real-World Scenario: ATtiny85 PIR Motion Lamp</h3>
+                        <p class="text-sm md:text-base text-[#2b1728] max-w-3xl">Watch how variations in wait time affect a real hardware system. A PIR sensor triggers an interrupt to turn on a 3W LED. Will the MCU finish processing in time?</p>
+                    </header>
+
+                    <div class="w-full bg-[#fdfbf7] border-4 border-[#2b1728] shadow-[4px_4px_0px_#2B1728] relative overflow-hidden rounded mb-6 aspect-[2/1] sm:aspect-[2.5/1] min-h-[220px]">
+                        <canvas id="deadline-simulation-canvas" class="w-full h-full block" aria-label="Timeline simulation of the sensor task and deadline"></canvas>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <button type="button" onclick="runDeadlineSimulation(3)" class="w-full sm:w-auto bg-[#ffc185] text-[#2b1728] border-2 border-[#2b1728] shadow-[2px_2px_0px_#2B1728] font-bold uppercase tracking-wider py-3 px-6 hover:bg-[#f08a6a] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-colors flex items-center justify-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#712137] inline-block" aria-hidden="true"></span>Run: Normal Load (3ms wait)
+                        </button>
+                        <button type="button" onclick="runDeadlineSimulation(5)" class="w-full sm:w-auto bg-[#cc4240] text-white border-2 border-[#2b1728] shadow-[2px_2px_0px_#2B1728] font-bold uppercase tracking-wider py-3 px-6 hover:bg-[#712137] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-colors flex items-center justify-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#ffc185] inline-block" aria-hidden="true"></span>Run: Heavy Load (5ms wait)
+                        </button>
+                    </div>
+                    <p id="deadline-simulation-status" class="mt-4 text-center text-sm font-bold text-[#712137]" aria-live="polite">Choose a load to run the simulation.</p>
+                </section>
+            </div>
+        </section>
+
+        <section id="task-timing-types" aria-labelledby="task-timing-types-title" class="w-full px-4 py-12 md:px-8 lg:px-12">
+            <main class="max-w-7xl mx-auto relative z-10 bg-[#FFFAF5] p-6 md:p-10 border-4 border-[#2b1728] shadow-[6px_6px_0px_#2B1728]">
+                <header class="mb-10 border-b-4 border-double border-[#712137] pb-6 text-center lg:text-left">
+                    <p class="text-[#cc4240] font-bold uppercase tracking-widest text-xs md:text-sm mb-2">Timing Characteristics</p>
+                    <h2 id="task-timing-types-title" class="text-3xl md:text-4xl lg:text-5xl font-black text-[#2b1728] tracking-tight">Periodic, aperiodic, and sporadic tasks</h2>
+                </header>
+
+                <div class="scout-table w-full border-2 border-[#712137] shadow-[3px_3px_0px_#2B1728] bg-white overflow-hidden" role="table" aria-label="Comparison of periodic, aperiodic, and sporadic tasks">
+                    <div class="scout-table-head font-bold text-lg" role="row">
+                        <div role="columnheader">Type</div>
+                        <div role="columnheader">Released...</div>
+                        <div role="columnheader">Example</div>
+                        <div role="columnheader">Visualization</div>
+                    </div>
+
+                    <div class="scout-table-row" role="row">
+                        <h3 class="scout-table-row-title">Periodic</h3>
+                        <div class="scout-table-cell flex items-center" role="rowheader"><span class="block lg:hidden text-[#712137] font-bold mb-1">Type</span><span class="hidden lg:block font-bold text-xl text-[#712137]">Periodic</span></div>
+                        <div class="scout-table-cell flex flex-col justify-center" role="cell"><span class="lg:hidden text-[#712137] font-bold mb-1">Released:</span><p>At a fixed rate, every period T</p></div>
+                        <div class="scout-table-cell flex flex-col justify-center" role="cell"><span class="lg:hidden text-[#712137] font-bold mb-1">Example:</span><p>Read the temperature every 100 ms; update motor speed every 1 ms</p></div>
+                        <div class="scout-table-cell flex items-center justify-center" role="cell"><div class="canvas-container relative w-full h-24 border-2 border-[#2b1728] rounded"><span class="absolute top-1 left-2 text-[10px] text-[#2b1728]/60 font-bold uppercase">Periodic (Fixed)</span><canvas id="task-type-periodic-canvas" class="w-full h-full block" aria-label="Periodic task timeline with events at a fixed interval"></canvas></div></div>
+                    </div>
+
+                    <div class="scout-table-row" role="row">
+                        <h3 class="scout-table-row-title">Aperiodic</h3>
+                        <div class="scout-table-cell flex items-center bg-white" role="rowheader"><span class="block lg:hidden text-[#712137] font-bold mb-1">Type</span><span class="hidden lg:block font-bold text-xl text-[#712137]">Aperiodic</span></div>
+                        <div class="scout-table-cell flex flex-col justify-center bg-white" role="cell"><span class="lg:hidden text-[#712137] font-bold mb-1">Released:</span><p>By irregular events, with no minimum gap between them</p></div>
+                        <div class="scout-table-cell flex flex-col justify-center bg-white" role="cell"><span class="lg:hidden text-[#712137] font-bold mb-1">Example:</span><p>A user presses a button; a network message arrives</p></div>
+                        <div class="scout-table-cell flex items-center justify-center bg-white" role="cell"><div class="canvas-container relative w-full h-24 border-2 border-[#2b1728] rounded"><span class="absolute top-1 left-2 text-[10px] text-[#2b1728]/60 font-bold uppercase">Aperiodic (Random)</span><canvas id="task-type-aperiodic-canvas" class="w-full h-full block" aria-label="Aperiodic task timeline with irregular events"></canvas></div></div>
+                    </div>
+
+                    <div class="scout-table-row" role="row">
+                        <h3 class="scout-table-row-title">Sporadic</h3>
+                        <div class="scout-table-cell flex items-center" role="rowheader"><span class="block lg:hidden text-[#712137] font-bold mb-1">Type</span><span class="hidden lg:block font-bold text-xl text-[#712137]">Sporadic</span></div>
+                        <div class="scout-table-cell flex flex-col justify-center" role="cell"><span class="lg:hidden text-[#712137] font-bold mb-1">Released:</span><p>By irregular events, but with a known minimum gap</p></div>
+                        <div class="scout-table-cell flex flex-col justify-center" role="cell"><span class="lg:hidden text-[#712137] font-bold mb-1">Example:</span><p>An emergency-stop button that cannot trigger more than once per 100 ms</p></div>
+                        <div class="scout-table-cell flex items-center justify-center" role="cell"><div class="canvas-container relative w-full h-24 border-2 border-[#2b1728] rounded"><span class="absolute top-1 left-2 text-[10px] text-[#2b1728]/60 font-bold uppercase">Sporadic (Min-gap)</span><canvas id="task-type-sporadic-canvas" class="w-full h-full block" aria-label="Sporadic task timeline with a guaranteed minimum gap"></canvas></div></div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <section id="airbag-deadline" aria-labelledby="airbag-deadline-title" class="w-full p-4 md:p-8">
+            <div class="max-w-6xl mx-auto relative z-10 bg-[#fdfbf7] p-6 md:p-10 border-4 border-[#2b1728] shadow-[6px_6px_0px_#2B1728]">
+                <header class="mb-8 border-b-4 border-double border-[#712137] pb-6">
+                    <p class="text-[#cc4240] font-bold uppercase tracking-widest text-xs md:text-sm mb-2">Field Manual &mdash; Sec. 5</p>
+                    <h2 id="airbag-deadline-title" class="text-3xl md:text-4xl lg:text-5xl font-black text-[#2b1728] tracking-tight mb-3">Real-world example: the airbag deadline</h2>
+                    <p class="text-[#712137] text-sm md:text-base font-bold bg-[#ffc185]/30 inline-block px-3 py-1 border-l-4 border-[#712137]">Approximate timeline of a frontal crash. Numbers are milliseconds after impact.</p>
+                </header>
+
+                <div class="airbag-scout-table border-2 border-[#712137] shadow-[3px_3px_0px_#2B1728] bg-white overflow-hidden mb-8" role="table" aria-label="Approximate airbag deployment timeline">
+                    <div class="airbag-header-row" role="row">
+                        <div class="airbag-cell justify-center" role="columnheader">Time (ms)</div>
+                        <div class="airbag-cell" role="columnheader">Stage</div>
+                        <div class="airbag-cell" role="columnheader">Description</div>
+                        <div class="airbag-cell justify-center" role="columnheader">Animation</div>
+                    </div>
+
+                    <div class="airbag-scout-row" role="row">
+                        <div class="airbag-cell justify-center" role="cell"><span class="airbag-mobile-label">Time:</span><span class="merit-badge w-12 h-12 rounded-full bg-[#ffc185] flex items-center justify-center font-black text-lg text-[#2b1728] shadow-sm">0</span></div>
+                        <div class="airbag-cell" role="rowheader"><span class="airbag-mobile-label">Stage:</span><h3 class="font-bold text-xl text-[#712137]">Impact</h3></div>
+                        <div class="airbag-cell" role="cell"><span class="airbag-mobile-label self-start mt-1">Desc:</span><p class="text-[#2b1728] text-sm leading-relaxed">Car hits an obstacle. Crash sensors start measuring deceleration.</p></div>
+                        <div class="airbag-cell airbag-canvas-cell" role="cell"><div class="airbag-canvas-container w-full border-2 border-[#2b1728] rounded bg-white"><canvas id="airbag-anim-impact" width="200" height="100" aria-label="Animation of vehicle impact"></canvas></div></div>
+                    </div>
+
+                    <div class="airbag-scout-row" role="row">
+                        <div class="airbag-cell justify-center" role="cell"><span class="airbag-mobile-label">Time:</span><span class="merit-badge w-12 h-12 rounded-full bg-[#ffc185] flex items-center justify-center font-black text-lg text-[#2b1728] shadow-sm">3</span></div>
+                        <div class="airbag-cell" role="rowheader"><span class="airbag-mobile-label">Stage:</span><h3 class="font-bold text-xl text-[#712137]">Sense</h3></div>
+                        <div class="airbag-cell" role="cell"><span class="airbag-mobile-label self-start mt-1">Desc:</span><p class="text-[#2b1728] text-sm leading-relaxed">Accelerometers sample continuously; ECU (Engine Control Unit) filters the signal.</p></div>
+                        <div class="airbag-cell airbag-canvas-cell" role="cell"><div class="airbag-canvas-container w-full border-2 border-[#2b1728] rounded bg-white"><canvas id="airbag-anim-sense" width="200" height="100" aria-label="Animation of accelerometer sensing"></canvas></div></div>
+                    </div>
+
+                    <div class="airbag-scout-row" role="row">
+                        <div class="airbag-cell justify-center bg-[#ffc185]/20" role="cell"><span class="airbag-mobile-label">Time:</span><span class="merit-badge w-12 h-12 rounded-full bg-[#f08a6a] flex items-center justify-center font-black text-lg text-white shadow-sm border-2 border-[#2b1728]">15</span></div>
+                        <div class="airbag-cell bg-[#ffc185]/20" role="rowheader"><span class="airbag-mobile-label">Stage:</span><h3 class="font-bold text-xl text-[#cc4240]">Decide</h3></div>
+                        <div class="airbag-cell bg-[#ffc185]/20" role="cell"><span class="airbag-mobile-label self-start mt-1">Desc:</span><p class="text-[#2b1728] font-bold text-sm leading-relaxed">ECU (Engine Control Unit) decides it is a real crash (not a pothole) and fires the inflator.</p></div>
+                        <div class="airbag-cell airbag-canvas-cell bg-[#ffc185]/20" role="cell"><div class="airbag-canvas-container w-full border-2 border-[#2b1728] rounded bg-white"><canvas id="airbag-anim-decide" width="200" height="100" aria-label="Animation of the ECU crash decision"></canvas></div></div>
+                    </div>
+
+                    <div class="airbag-scout-row" role="row">
+                        <div class="airbag-cell justify-center" role="cell"><span class="airbag-mobile-label">Time:</span><span class="merit-badge w-12 h-12 rounded-full bg-[#ffc185] flex items-center justify-center font-black text-lg text-[#2b1728] shadow-sm">45</span></div>
+                        <div class="airbag-cell" role="rowheader"><span class="airbag-mobile-label">Stage:</span><h3 class="font-bold text-xl text-[#712137]">Inflate</h3></div>
+                        <div class="airbag-cell" role="cell"><span class="airbag-mobile-label self-start mt-1">Desc:</span><p class="text-[#2b1728] text-sm leading-relaxed">Airbag fully inflated, about 30 ms after firing.</p></div>
+                        <div class="airbag-cell airbag-canvas-cell" role="cell"><div class="airbag-canvas-container w-full border-2 border-[#2b1728] rounded bg-white"><canvas id="airbag-anim-inflate" width="200" height="100" aria-label="Animation of the airbag inflating"></canvas></div></div>
+                    </div>
+
+                    <div class="airbag-scout-row" role="row">
+                        <div class="airbag-cell justify-center" role="cell"><span class="airbag-mobile-label">Time:</span><span class="merit-badge w-12 h-12 rounded-full bg-[#ffc185] flex items-center justify-center font-black text-lg text-[#2b1728] shadow-sm">60</span></div>
+                        <div class="airbag-cell" role="rowheader"><span class="airbag-mobile-label">Stage:</span><h3 class="font-bold text-xl text-[#712137]">Occupant</h3></div>
+                        <div class="airbag-cell" role="cell"><span class="airbag-mobile-label self-start mt-1">Desc:</span><p class="text-[#2b1728] text-sm leading-relaxed">The passenger's head reaches the airbag.</p></div>
+                        <div class="airbag-cell airbag-canvas-cell" role="cell"><div class="airbag-canvas-container w-full border-2 border-[#2b1728] rounded bg-white"><canvas id="airbag-anim-occupant" width="200" height="100" aria-label="Animation of the occupant reaching the airbag"></canvas></div></div>
+                    </div>
+                </div>
+
+                <aside class="warning-box bg-[#ffc185]/40 p-5 md:p-6 relative shadow-[3px_3px_0px_#2B1728]">
+                    <div class="absolute -top-3 -left-3 w-6 h-6 bg-[#fdfbf7] border-2 border-[#2b1728] rounded-full flex items-center justify-center shadow-sm" aria-hidden="true"><span class="w-2 h-2 bg-[#cc4240] rounded-full"></span></div>
+                    <div class="absolute -top-3 -right-3 w-6 h-6 bg-[#fdfbf7] border-2 border-[#2b1728] rounded-full flex items-center justify-center shadow-sm" aria-hidden="true"><span class="w-2 h-2 bg-[#cc4240] rounded-full"></span></div>
+                    <p class="text-[#2b1728] font-bold text-base md:text-lg leading-relaxed text-center">If the decision is 30 ms late, the bag inflates into the passenger's face. A correct decision delivered late can cause injury. <span class="bg-[#cc4240] text-white px-2 py-1 inline-block mt-2 shadow-[2px_2px_0px_#2B1728]">Classic hard real-time.</span></p>
+                </aside>
+            </div>
+        </section>
         </div>
     </div>
 
@@ -396,6 +881,31 @@
                         <div class="text-2xl animate-spin-slow">⚙️</div>
                     </div>
                     <span class="absolute top-2 text-xs font-bold text-slate-500 bg-slate-50 px-2 rounded-full">Stream Processor</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="key-timing-modal" class="fixed inset-0 hidden opacity-0 items-center justify-center p-4">
+        <div id="key-timing-postcard" role="dialog" aria-modal="true" aria-labelledby="key-timing-modal-title" aria-describedby="key-timing-definition" class="postcard w-full max-w-5xl border-4 border-[#2b1728] rounded flex flex-col md:flex-row relative scale-95 max-h-[90vh] overflow-y-auto overflow-x-hidden">
+            <button id="key-timing-close" type="button" class="absolute top-4 left-4 w-10 h-10 bg-[#cc4240] text-white border-2 border-[#2b1728] font-bold text-xl z-20 transition-all flex items-center justify-center hover:translate-x-1 hover:translate-y-1" aria-label="Close timing term demonstration">&times;</button>
+            <div class="w-full md:w-1/2 p-4 md:p-8 border-b-4 md:border-b-0 md:border-r-4 border-dashed border-[#2b1728] flex flex-col items-center justify-center bg-white/50 relative">
+                <h3 class="font-bold text-[#712137] mb-4 text-center">Visual Demonstration</h3>
+                <div class="w-full aspect-[4/3] bg-[#fdfbf7] border-2 border-[#2b1728] shadow-inner relative overflow-hidden flex items-center justify-center rounded">
+                    <canvas id="key-timing-canvas" width="400" height="300" class="w-full h-full object-contain" aria-label="Animated timeline for the selected timing term"></canvas>
+                </div>
+                <p class="mt-4 text-xs text-[#2b1728]/60 text-center uppercase tracking-widest">Fig 1. Animation Loop</p>
+            </div>
+            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col relative">
+                <div class="absolute top-6 right-6 stamp" aria-hidden="true"><div class="stamp-inner font-serif font-black" id="key-timing-stamp">1</div></div>
+                <div class="pr-20 mb-6">
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#2b1728] mb-2" id="key-timing-modal-title">Release time</h2>
+                    <p class="text-[#cc4240] font-bold uppercase tracking-widest text-sm">Definition:</p>
+                </div>
+                <div class="address-lines flex-grow text-[#2b1728] text-lg mb-6">
+                    <p id="key-timing-definition" class="mb-4">The moment a task becomes ready to run.</p>
+                    <p class="text-[#cc4240] font-bold uppercase tracking-widest text-sm bg-[#fdfbf7] inline-block pr-2">Elaboration:</p>
+                    <p id="key-timing-elaboration" class="font-bold text-[#712137]">The exact moment the system is notified that work needs to be done.</p>
                 </div>
             </div>
         </div>
@@ -714,6 +1224,924 @@
                 
             }, 400); // Spawn rapidly for stream effect
         }
+    </script>
+    <script>
+        const timingTerms = [
+            {
+                title: 'Release time',
+                definition: 'The moment a task becomes ready to run (e.g., a sensor interrupt arrives).',
+                elaboration: 'The exact millisecond the system is notified that work needs to be done, like an alarm going off.'
+            },
+            {
+                title: 'Deadline',
+                definition: 'The latest time by which the task must finish.',
+                elaboration: 'The absolute cutoff point. If the task finishes after this line, the system has failed.'
+            },
+            {
+                title: 'Response time',
+                definition: 'Time from release to completion, including waiting.',
+                elaboration: 'The total duration from when the task was triggered to when it was entirely completed.'
+            },
+            {
+                title: 'Period',
+                definition: 'Interval between releases of a repeating task, e.g., every 10 ms.',
+                elaboration: 'A regular heartbeat. The system knows exactly when the next chunk of work will arrive based on this steady rhythm.'
+            },
+            {
+                title: 'Jitter',
+                definition: 'Variation in timing from one release or response to the next.',
+                elaboration: 'The wobble in predictability. Like a bus that usually arrives every 10 minutes, but sometimes takes 9 or 12 minutes.'
+            },
+            {
+                title: 'Latency',
+                definition: 'Delay between an event occurring and the system starting to react.',
+                elaboration: "It's the gap between the trigger happening and the actual processing beginning."
+            }
+        ];
+        const timingCardContainer = document.getElementById('timing-term-cards');
+        const timingModal = document.getElementById('key-timing-modal');
+        const timingPostcard = document.getElementById('key-timing-postcard');
+        const timingCanvas = document.getElementById('key-timing-canvas');
+        const timingContext = timingCanvas.getContext('2d');
+        let activeTimingTerm = 0;
+        let timingAnimationFrame = null;
+        let timingFocusReturn = null;
+
+        timingCardContainer.innerHTML = timingTerms.map((term, index) => `
+            <article class="scout-card border-4 border-[#2b1728] p-1 h-full shadow-[6px_6px_0px_#2B1728]">
+                <button type="button" class="w-full h-full text-left group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#cc4240]" data-timing-term="${index}" aria-label="View ${term.title} animation">
+                    <div class="border-2 border-dashed border-[#2b1728] p-5 h-full flex flex-col bg-white">
+                        <header class="flex items-start gap-4 mb-4">
+                            <span class="merit-badge w-12 h-12 rounded-full bg-[#ffc185] flex items-center justify-center font-serif font-black text-xl text-[#2b1728] shrink-0 shadow-inner group-hover:bg-[#cc4240] group-hover:text-white transition-colors duration-300">${index + 1}</span>
+                            <span class="font-serif text-2xl font-bold text-[#2b1728] mt-2 leading-tight group-hover:text-[#712137] transition-colors">${term.title}</span>
+                        </header>
+                        <span class="text-[#2b1728] text-sm mb-4 font-bold bg-[#ffc185]/20 p-2 border-l-4 border-[#2b1728]">${term.definition}</span>
+                        <span class="mt-auto block">
+                            <span class="block text-xs uppercase text-[#cc4240] font-bold mb-1 tracking-widest">Elaboration:</span>
+                            <span class="block text-[#712137] text-sm leading-relaxed">${term.elaboration}</span>
+                        </span>
+                    </div>
+                </button>
+            </article>
+        `).join('');
+
+        timingCardContainer.querySelectorAll('[data-timing-term]').forEach(card => {
+            card.addEventListener('click', () => openTimingTerm(Number(card.dataset.timingTerm), card));
+        });
+
+        const timingColors = {
+            plum: '#2b1728',
+            burgundy: '#712137',
+            red: '#cc4240',
+            coral: '#f08a6a',
+            peach: '#ffc185',
+            paper: '#fdfbf7'
+        };
+
+        function openTimingTerm(index, trigger) {
+            activeTimingTerm = index;
+            timingFocusReturn = trigger;
+            const term = timingTerms[index];
+            document.getElementById('key-timing-stamp').textContent = index + 1;
+            document.getElementById('key-timing-modal-title').textContent = term.title;
+            document.getElementById('key-timing-definition').textContent = term.definition;
+            document.getElementById('key-timing-elaboration').textContent = term.elaboration;
+            timingModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                timingModal.classList.remove('opacity-0');
+                timingPostcard.classList.remove('scale-95');
+                timingPostcard.classList.add('scale-100');
+                document.getElementById('key-timing-close').focus();
+            });
+            if (timingAnimationFrame) cancelAnimationFrame(timingAnimationFrame);
+            timingAnimationFrame = requestAnimationFrame(renderTimingAnimation);
+        }
+
+        function closeTimingTerm() {
+            if (timingModal.classList.contains('hidden')) return;
+            timingModal.classList.add('opacity-0');
+            timingPostcard.classList.remove('scale-100');
+            timingPostcard.classList.add('scale-95');
+            if (timingAnimationFrame) cancelAnimationFrame(timingAnimationFrame);
+            timingAnimationFrame = null;
+            setTimeout(() => {
+                timingModal.classList.add('hidden');
+                if (timingFocusReturn) timingFocusReturn.focus();
+            }, 300);
+        }
+
+        document.getElementById('key-timing-close').addEventListener('click', closeTimingTerm);
+        timingModal.addEventListener('click', event => {
+            if (event.target === timingModal) closeTimingTerm();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && !timingModal.classList.contains('hidden')) closeTimingTerm();
+        });
+
+        function drawTimingAxis(y) {
+            timingContext.beginPath();
+            timingContext.moveTo(30, y);
+            timingContext.lineTo(370, y);
+            timingContext.lineWidth = 3;
+            timingContext.strokeStyle = timingColors.plum;
+            timingContext.stroke();
+            timingContext.beginPath();
+            timingContext.moveTo(360, y - 5);
+            timingContext.lineTo(370, y);
+            timingContext.lineTo(360, y + 5);
+            timingContext.fillStyle = timingColors.plum;
+            timingContext.fill();
+            timingContext.font = 'bold 12px "Courier Prime", monospace';
+            timingContext.fillText('TIME', 340, y + 20);
+        }
+
+        function drawTimingTask(x, y, width, height, active = false) {
+            timingContext.fillStyle = active ? timingColors.coral : timingColors.peach;
+            timingContext.strokeStyle = timingColors.plum;
+            timingContext.lineWidth = 2;
+            timingContext.fillRect(x, y, width, height);
+            timingContext.strokeRect(x, y, width, height);
+            timingContext.strokeStyle = active ? timingColors.burgundy : timingColors.coral;
+            timingContext.lineWidth = 1;
+            for (let stripe = x + 5; stripe < x + width; stripe += 10) {
+                timingContext.beginPath();
+                timingContext.moveTo(stripe, y);
+                timingContext.lineTo(stripe, y + height);
+                timingContext.stroke();
+            }
+        }
+
+        function drawTimingTrigger(x, y, active) {
+            timingContext.fillStyle = active ? timingColors.red : timingColors.burgundy;
+            timingContext.beginPath();
+            timingContext.moveTo(x, y);
+            timingContext.lineTo(x - 10, y - 20);
+            timingContext.lineTo(x + 10, y - 20);
+            timingContext.closePath();
+            timingContext.fill();
+            if (active) {
+                timingContext.strokeStyle = timingColors.red;
+                timingContext.lineWidth = 2;
+                timingContext.beginPath();
+                timingContext.arc(x, y - 20, 10, Math.PI, 0);
+                timingContext.stroke();
+                timingContext.beginPath();
+                timingContext.arc(x, y - 20, 18, Math.PI, 0);
+                timingContext.stroke();
+            }
+        }
+
+        function renderTimingAnimation(timestamp) {
+            timingContext.fillStyle = timingColors.paper;
+            timingContext.fillRect(0, 0, timingCanvas.width, timingCanvas.height);
+            const time = timestamp;
+
+            if (activeTimingTerm === 0) {
+                const phase = time % 3000;
+                drawTimingAxis(200);
+                timingContext.font = 'bold 14px monospace';
+                timingContext.fillStyle = timingColors.burgundy;
+                timingContext.fillText(phase > 1000 ? 'TASK RELEASED!' : 'WAITING FOR EVENT...', 40, 50);
+                if (phase > 800 && phase <= 1000) drawTimingTrigger(100, 150 + ((phase - 800) / 200) * 50, false);
+                if (phase > 1000) {
+                    drawTimingTrigger(100, 200, true);
+                    drawTimingTask(Math.min(320, 100 + ((phase - 1000) / 2000) * 200), 160, 60, 40, true);
+                }
+            } else if (activeTimingTerm === 1) {
+                const phase = time % 3000;
+                const finished = phase > 2800;
+                drawTimingAxis(200);
+                timingContext.setLineDash([5, 5]);
+                timingContext.beginPath();
+                timingContext.moveTo(300, 50);
+                timingContext.lineTo(300, 220);
+                timingContext.lineWidth = 3;
+                timingContext.strokeStyle = timingColors.red;
+                timingContext.stroke();
+                timingContext.setLineDash([]);
+                timingContext.fillStyle = timingColors.red;
+                timingContext.font = 'bold 16px "Courier Prime", monospace';
+                timingContext.fillText('DEADLINE', 265, 40);
+                const blockX = finished ? 240 : 50 + (phase / 2800) * 190;
+                drawTimingTask(blockX, 160, 60, 40, !finished);
+                timingContext.fillStyle = finished ? timingColors.plum : timingColors.burgundy;
+                timingContext.fillText(finished ? 'COMPLETED ON TIME' : 'PROCESSING...', 50, 100);
+            } else if (activeTimingTerm === 2) {
+                const phase = time % 4000;
+                drawTimingAxis(200);
+                drawTimingTrigger(80, 200, true);
+                let blockX = 80;
+                let status = 'RELEASE';
+                if (phase < 1500) {
+                    status = 'WAITING IN QUEUE...';
+                    drawTimingTask(80, 160, 40, 40, false);
+                } else if (phase < 3500) {
+                    status = 'PROCESSING...';
+                    blockX = 80 + ((phase - 1500) / 2000) * 180;
+                    drawTimingTask(blockX, 160, 40, 40, true);
+                } else {
+                    status = 'COMPLETED';
+                    drawTimingTask(260, 160, 40, 40, false);
+                    timingContext.beginPath();
+                    timingContext.moveTo(80, 130);
+                    timingContext.lineTo(80, 110);
+                    timingContext.lineTo(300, 110);
+                    timingContext.lineTo(300, 130);
+                    timingContext.strokeStyle = timingColors.burgundy;
+                    timingContext.lineWidth = 2;
+                    timingContext.stroke();
+                    timingContext.fillStyle = timingColors.plum;
+                    timingContext.font = 'bold 14px monospace';
+                    timingContext.fillText('RESPONSE TIME', 135, 100);
+                }
+                timingContext.fillStyle = timingColors.plum;
+                timingContext.font = 'bold 14px monospace';
+                timingContext.fillText('Status: ' + status, 40, 50);
+            } else if (activeTimingTerm === 3) {
+                const phase = time % 3000;
+                const intervals = [100, 200, 300];
+                const playhead = 50 + (phase / 3000) * 300;
+                drawTimingAxis(150);
+                intervals.forEach(position => {
+                    timingContext.beginPath();
+                    timingContext.moveTo(position, 140);
+                    timingContext.lineTo(position, 160);
+                    timingContext.strokeStyle = timingColors.plum;
+                    timingContext.lineWidth = 2;
+                    timingContext.stroke();
+                });
+                timingContext.strokeStyle = timingColors.burgundy;
+                timingContext.beginPath();
+                timingContext.moveTo(100, 180);
+                timingContext.lineTo(100, 195);
+                timingContext.lineTo(200, 195);
+                timingContext.lineTo(200, 180);
+                timingContext.moveTo(200, 180);
+                timingContext.lineTo(200, 195);
+                timingContext.lineTo(300, 195);
+                timingContext.lineTo(300, 180);
+                timingContext.stroke();
+                timingContext.fillStyle = timingColors.plum;
+                timingContext.font = 'bold 14px monospace';
+                timingContext.fillText('T = 10ms', 120, 215);
+                timingContext.fillText('T = 10ms', 220, 215);
+                timingContext.beginPath();
+                timingContext.moveTo(playhead, 50);
+                timingContext.lineTo(playhead, 170);
+                timingContext.strokeStyle = timingColors.red;
+                timingContext.lineWidth = 2;
+                timingContext.stroke();
+                intervals.forEach(position => drawTimingTask(position - 15, 100, 30, 40, Math.abs(playhead - position) < 20));
+            } else if (activeTimingTerm === 4) {
+                const phase = time % 3000;
+                const expected = [100, 200, 300];
+                const actual = [90, 230, 280];
+                const playhead = 50 + (phase / 3000) * 300;
+                drawTimingAxis(150);
+                timingContext.setLineDash([3, 3]);
+                expected.forEach(position => {
+                    timingContext.beginPath();
+                    timingContext.moveTo(position, 125);
+                    timingContext.lineTo(position, 170);
+                    timingContext.strokeStyle = timingColors.plum;
+                    timingContext.lineWidth = 1;
+                    timingContext.stroke();
+                });
+                timingContext.setLineDash([]);
+                timingContext.fillStyle = timingColors.plum;
+                timingContext.font = 'bold 12px monospace';
+                timingContext.fillText('EXPECTED (PERIOD)', 50, 200);
+                timingContext.beginPath();
+                timingContext.moveTo(playhead, 50);
+                timingContext.lineTo(playhead, 170);
+                timingContext.strokeStyle = timingColors.red;
+                timingContext.lineWidth = 2;
+                timingContext.stroke();
+                actual.forEach((position, index) => {
+                    if (playhead >= position) {
+                        drawTimingTask(position - 15, 100, 30, 40, Math.abs(playhead - position) < 20);
+                        const difference = position - expected[index];
+                        timingContext.fillStyle = timingColors.red;
+                        timingContext.font = 'bold 12px monospace';
+                        timingContext.fillText(`${difference > 0 ? '+' : ''}${difference}ms`, position - 10, 90);
+                    }
+                });
+                timingContext.fillStyle = timingColors.burgundy;
+                timingContext.font = 'bold 16px "Courier Prime", monospace';
+                timingContext.fillText('UNPREDICTABLE VARIATION', 95, 40);
+            } else {
+                const phase = time % 3500;
+                drawTimingAxis(200);
+                drawTimingTrigger(80, 200, true);
+                timingContext.fillStyle = timingColors.plum;
+                timingContext.font = 'bold 14px monospace';
+                timingContext.fillText('EVENT', 65, 225);
+                timingContext.fillStyle = timingColors.burgundy;
+                if (phase < 1500) {
+                    timingContext.fillText('LATENCY GAP...', 110, 100);
+                    timingContext.beginPath();
+                    timingContext.moveTo(80, 150);
+                    timingContext.lineTo(80 + (phase / 1500) * 120, 150);
+                    timingContext.strokeStyle = timingColors.red;
+                    timingContext.lineWidth = 4;
+                    timingContext.stroke();
+                } else {
+                    timingContext.fillStyle = timingColors.red;
+                    timingContext.fillText('LATENCY = DELAY', 110, 100);
+                    timingContext.beginPath();
+                    timingContext.moveTo(80, 150);
+                    timingContext.lineTo(200, 150);
+                    timingContext.strokeStyle = timingColors.red;
+                    timingContext.lineWidth = 4;
+                    timingContext.stroke();
+                    drawTimingTask(200 + ((phase - 1500) / 2000) * 100, 160, 40, 40, true);
+                    timingContext.fillStyle = timingColors.plum;
+                    timingContext.fillText('SYSTEM REACTS', 185, 225);
+                }
+            }
+
+            timingAnimationFrame = requestAnimationFrame(renderTimingAnimation);
+        }
+    </script>
+    <script>
+        const deadlineCanvas = document.getElementById('deadline-simulation-canvas');
+        const deadlineContext = deadlineCanvas.getContext('2d');
+        const deadlineStatus = document.getElementById('deadline-simulation-status');
+        const deadlineColors = {
+            plum: '#2b1728',
+            burgundy: '#712137',
+            red: '#cc4240',
+            coral: '#f08a6a',
+            peach: '#ffc185',
+            paper: '#fdfbf7',
+            white: '#ffffff'
+        };
+        let deadlineWidth = 0;
+        let deadlineHeight = 0;
+        let deadlineSimulationTime = 95;
+        let deadlineWaitTime = 3;
+        let deadlineLastTimestamp = 0;
+        let deadlineIsRunning = false;
+        let deadlineFrameRequest = null;
+
+        function deadlineMapTime(time) {
+            const margin = Math.min(48, deadlineWidth * 0.08);
+            return margin + ((time - 95) / 20) * (deadlineWidth - margin * 2);
+        }
+
+        function drawDeadlineTask(x, y, width, height, active) {
+            deadlineContext.fillStyle = active ? deadlineColors.coral : deadlineColors.peach;
+            deadlineContext.strokeStyle = deadlineColors.plum;
+            deadlineContext.lineWidth = 2;
+            deadlineContext.fillRect(x, y, width, height);
+            deadlineContext.strokeRect(x, y, width, height);
+        }
+
+        function drawDeadlineScene(timestamp) {
+            if (deadlineIsRunning) {
+                if (!deadlineLastTimestamp) deadlineLastTimestamp = timestamp;
+                const elapsed = Math.min(timestamp - deadlineLastTimestamp, 50);
+                deadlineSimulationTime += elapsed * 0.005;
+                deadlineLastTimestamp = timestamp;
+            }
+
+            const width = deadlineWidth;
+            const height = deadlineHeight;
+            const context = deadlineContext;
+            const axisY = height * 0.28;
+            const hardwareY = height * 0.72;
+            const startTime = 100 + deadlineWaitTime;
+            const finishTime = startTime + 6;
+            const deadlineX = deadlineMapTime(110);
+
+            context.clearRect(0, 0, width, height);
+            context.fillStyle = deadlineColors.paper;
+            context.fillRect(0, 0, width, height);
+
+            context.strokeStyle = deadlineColors.plum;
+            context.lineWidth = 3;
+            context.beginPath();
+            context.moveTo(deadlineMapTime(95), axisY);
+            context.lineTo(deadlineMapTime(115), axisY);
+            context.stroke();
+
+            context.textAlign = 'center';
+            context.fillStyle = deadlineColors.plum;
+            context.font = 'bold 11px "Courier Prime", monospace';
+            for (let time = 95; time <= 115; time += 1) {
+                const x = deadlineMapTime(time);
+                context.beginPath();
+                context.moveTo(x, axisY - 4);
+                context.lineTo(x, axisY + (time % 5 === 0 ? 7 : 4));
+                context.lineWidth = time % 5 === 0 ? 2 : 1;
+                context.strokeStyle = deadlineColors.plum;
+                context.stroke();
+                if (time % 5 === 0) context.fillText(String(time), x, axisY - 8);
+            }
+
+            context.setLineDash([5, 5]);
+            context.beginPath();
+            context.moveTo(deadlineX, 8);
+            context.lineTo(deadlineX, height - 8);
+            context.strokeStyle = deadlineColors.red;
+            context.lineWidth = 2;
+            context.stroke();
+            context.setLineDash([]);
+            context.fillStyle = deadlineColors.red;
+            context.font = 'bold 12px Merriweather, serif';
+            context.fillText('DEADLINE (110)', Math.min(deadlineX, width - 65), 16);
+
+            if (deadlineSimulationTime >= 100) {
+                context.fillStyle = deadlineColors.peach;
+                context.fillRect(deadlineMapTime(100), axisY + 3, Math.max(0, deadlineMapTime(Math.min(deadlineSimulationTime, startTime)) - deadlineMapTime(100)), 13);
+            }
+            if (deadlineSimulationTime >= startTime) {
+                context.fillStyle = deadlineColors.coral;
+                context.fillRect(deadlineMapTime(startTime), axisY + 3, Math.max(0, deadlineMapTime(Math.min(deadlineSimulationTime, finishTime)) - deadlineMapTime(startTime)), 13);
+            }
+
+            const cursorX = deadlineMapTime(Math.max(95, Math.min(deadlineSimulationTime, 115)));
+            context.beginPath();
+            context.moveTo(cursorX, axisY - 20);
+            context.lineTo(cursorX, height - 18);
+            context.strokeStyle = deadlineColors.plum;
+            context.lineWidth = 2;
+            context.stroke();
+            context.fillStyle = deadlineColors.plum;
+            context.font = 'bold 12px "Courier Prime", monospace';
+            context.fillText(`t=${deadlineSimulationTime.toFixed(1)} ms`, Math.max(54, Math.min(cursorX, width - 54)), axisY + 33);
+
+            const sensorX = deadlineMapTime(100);
+            const controllerX = deadlineMapTime((startTime + finishTime) / 2);
+            const lampX = Math.min(width - 30, deadlineX + 30);
+            context.textAlign = 'center';
+
+            context.fillStyle = deadlineColors.plum;
+            context.fillRect(sensorX - 22, hardwareY - 10, 44, 28);
+            context.beginPath();
+            context.arc(sensorX, hardwareY - 10, 17, Math.PI, 0);
+            context.fillStyle = deadlineSimulationTime >= 100 ? deadlineColors.coral : deadlineColors.paper;
+            context.fill();
+            context.strokeStyle = deadlineColors.plum;
+            context.lineWidth = 2;
+            context.stroke();
+            context.fillStyle = deadlineColors.plum;
+            context.font = 'bold 10px "Courier Prime", monospace';
+            context.fillText('PIR SENSOR', sensorX, hardwareY + 34);
+
+            context.fillStyle = deadlineColors.plum;
+            context.fillRect(controllerX - 37, hardwareY - 24, 74, 46);
+            context.fillStyle = deadlineColors.peach;
+            context.font = 'bold 11px "Courier Prime", monospace';
+            context.fillText('ATtiny85', controllerX, hardwareY - 6);
+            const isProcessing = deadlineSimulationTime >= startTime && deadlineSimulationTime < finishTime;
+            const isComplete = deadlineSimulationTime >= finishTime;
+            context.fillStyle = isProcessing ? deadlineColors.coral : (isComplete ? deadlineColors.white : deadlineColors.peach);
+            context.font = 'bold 9px "Courier Prime", monospace';
+            context.fillText(isProcessing ? 'PROCESSING' : (isComplete ? 'DONE' : 'IDLE'), controllerX, hardwareY + 9);
+            context.fillStyle = deadlineColors.plum;
+            context.font = 'bold 10px "Courier Prime", monospace';
+            context.fillText('MCU', controllerX, hardwareY + 36);
+
+            context.beginPath();
+            context.arc(lampX, hardwareY - 10, 13, 0, Math.PI * 2);
+            context.fillStyle = isComplete ? '#fff000' : (deadlineSimulationTime >= 110 ? deadlineColors.red : deadlineColors.paper);
+            context.fill();
+            context.strokeStyle = deadlineColors.plum;
+            context.stroke();
+            context.fillStyle = deadlineColors.plum;
+            context.fillRect(lampX - 8, hardwareY + 3, 16, 10);
+            if (isComplete && deadlineSimulationTime <= 115) {
+                context.beginPath();
+                context.arc(lampX, hardwareY - 10, 21, 0, Math.PI * 2);
+                context.strokeStyle = deadlineColors.peach;
+                context.lineWidth = 3;
+                context.stroke();
+            }
+            context.fillStyle = deadlineColors.plum;
+            context.font = 'bold 10px "Courier Prime", monospace';
+            context.fillText('3W LED', lampX, hardwareY + 34);
+
+            if (deadlineSimulationTime >= 110) {
+                const met = finishTime <= 110;
+                context.fillStyle = met ? deadlineColors.burgundy : deadlineColors.red;
+                context.font = 'bold 14px Merriweather, serif';
+                context.fillText(met ? 'SUCCESS: LED activated on time' : 'FAILURE: Deadline missed', width / 2, height * 0.14);
+                if (!deadlineIsRunning) {
+                    deadlineStatus.textContent = met ? 'Response time: 9 ms. Deadline met.' : 'Response time: 11 ms. Deadline missed.';
+                }
+            }
+
+            if (deadlineIsRunning && deadlineSimulationTime < 115) {
+                deadlineFrameRequest = requestAnimationFrame(drawDeadlineScene);
+            } else {
+                deadlineIsRunning = false;
+                deadlineFrameRequest = null;
+                if (deadlineSimulationTime >= 115) {
+                    deadlineStatus.textContent = finishTime <= 110 ? 'Response time: ' + (finishTime - 100) + ' ms. Deadline met.' : 'Response time: ' + (finishTime - 100) + ' ms. Deadline missed.';
+                }
+            }
+        }
+
+        function resizeDeadlineCanvas() {
+            const bounds = deadlineCanvas.getBoundingClientRect();
+            if (!bounds.width || !bounds.height) return;
+            const pixelRatio = window.devicePixelRatio || 1;
+            deadlineWidth = bounds.width;
+            deadlineHeight = bounds.height;
+            deadlineCanvas.width = Math.round(deadlineWidth * pixelRatio);
+            deadlineCanvas.height = Math.round(deadlineHeight * pixelRatio);
+            deadlineContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+            if (!deadlineIsRunning) drawDeadlineScene(0);
+        }
+
+        window.runDeadlineSimulation = function(waitTime) {
+            if (deadlineFrameRequest) cancelAnimationFrame(deadlineFrameRequest);
+            deadlineWaitTime = waitTime;
+            deadlineSimulationTime = 95;
+            deadlineLastTimestamp = 0;
+            deadlineIsRunning = true;
+            deadlineStatus.textContent = waitTime === 3 ? 'Normal load: expected to meet the deadline.' : 'Heavy load: checking for a missed deadline.';
+            deadlineFrameRequest = requestAnimationFrame(drawDeadlineScene);
+        };
+
+        window.addEventListener('resize', resizeDeadlineCanvas);
+        if ('ResizeObserver' in window) new ResizeObserver(resizeDeadlineCanvas).observe(deadlineCanvas.parentElement);
+        resizeDeadlineCanvas();
+    </script>
+    <script>
+        const taskTypeColors = {
+            plum: '#2b1728',
+            burgundy: '#712137',
+            periodic: '#cc4240',
+            aperiodic: '#f08a6a',
+            sporadic: '#ffc185'
+        };
+
+        class TaskTypeTimeline {
+            constructor(canvasId, type, color) {
+                this.canvas = document.getElementById(canvasId);
+                this.context = this.canvas.getContext('2d');
+                this.type = type;
+                this.color = color;
+                this.events = [];
+                this.period = 800;
+                this.minimumGap = 400;
+                this.timeUntilEvent = 0;
+                this.cooldown = 0;
+                this.width = 0;
+                this.height = 0;
+                this.resize();
+                this.events.push(this.width * 0.72);
+            }
+
+            resize() {
+                const bounds = this.canvas.getBoundingClientRect();
+                if (!bounds.width || !bounds.height) return;
+                const pixelRatio = window.devicePixelRatio || 1;
+                this.width = bounds.width;
+                this.height = bounds.height;
+                this.canvas.width = Math.round(this.width * pixelRatio);
+                this.canvas.height = Math.round(this.height * pixelRatio);
+                this.context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+                this.events = this.events.filter(position => position <= this.width);
+            }
+
+            update(delta) {
+                for (let index = 0; index < this.events.length; index += 1) {
+                    this.events[index] -= 0.08 * delta;
+                }
+                this.events = this.events.filter(position => position > -8);
+
+                if (this.type === 'periodic') {
+                    this.timeUntilEvent -= delta;
+                    if (this.timeUntilEvent <= 0) {
+                        this.events.push(this.width);
+                        this.timeUntilEvent += this.period;
+                    }
+                } else if (this.type === 'aperiodic') {
+                    const chance = 1 - Math.pow(0.96, delta / 16.67);
+                    if (Math.random() < chance) this.events.push(this.width);
+                } else {
+                    this.cooldown = Math.max(0, this.cooldown - delta);
+                    const chance = 1 - Math.pow(0.97, delta / 16.67);
+                    if (this.cooldown === 0 && Math.random() < chance) {
+                        this.events.push(this.width);
+                        this.cooldown = this.minimumGap;
+                    }
+                }
+            }
+
+            draw() {
+                const baseline = this.height - 18;
+                const context = this.context;
+                context.clearRect(0, 0, this.width, this.height);
+                context.beginPath();
+                context.moveTo(0, baseline);
+                context.lineTo(this.width, baseline);
+                context.strokeStyle = taskTypeColors.plum;
+                context.lineWidth = 2;
+                context.stroke();
+
+                this.events.forEach(position => {
+                    context.beginPath();
+                    context.moveTo(position, baseline);
+                    context.lineTo(position, baseline - 38);
+                    context.strokeStyle = this.color;
+                    context.lineWidth = 3;
+                    context.stroke();
+                    context.beginPath();
+                    context.arc(position, baseline - 38, 4, 0, Math.PI * 2);
+                    context.fillStyle = this.color;
+                    context.fill();
+                    context.lineWidth = 1.5;
+                    context.strokeStyle = taskTypeColors.plum;
+                    context.stroke();
+                });
+
+                context.beginPath();
+                context.moveTo(this.width - 2, baseline + 8);
+                context.lineTo(this.width - 2, baseline - 46);
+                context.setLineDash([4, 4]);
+                context.strokeStyle = taskTypeColors.burgundy;
+                context.lineWidth = 1;
+                context.stroke();
+                context.setLineDash([]);
+            }
+        }
+
+        const taskTypeTimelines = [
+            new TaskTypeTimeline('task-type-periodic-canvas', 'periodic', taskTypeColors.periodic),
+            new TaskTypeTimeline('task-type-aperiodic-canvas', 'aperiodic', taskTypeColors.aperiodic),
+            new TaskTypeTimeline('task-type-sporadic-canvas', 'sporadic', taskTypeColors.sporadic)
+        ];
+        const taskTypeSection = document.getElementById('task-timing-types');
+        let taskTypeAnimationFrame = null;
+        let taskTypeLastTime = 0;
+        let taskTypeIsVisible = false;
+        const taskTypeReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function drawTaskTypeTimelines(timestamp) {
+            const delta = taskTypeLastTime ? Math.min(timestamp - taskTypeLastTime, 50) : 0;
+            taskTypeLastTime = timestamp;
+            taskTypeTimelines.forEach(timeline => {
+                timeline.update(delta);
+                timeline.draw();
+            });
+            taskTypeAnimationFrame = requestAnimationFrame(drawTaskTypeTimelines);
+        }
+
+        function updateTaskTypeAnimation() {
+            const shouldAnimate = taskTypeIsVisible && !document.hidden && !taskTypeReducedMotion.matches;
+            if (shouldAnimate && taskTypeAnimationFrame === null) {
+                taskTypeLastTime = 0;
+                taskTypeAnimationFrame = requestAnimationFrame(drawTaskTypeTimelines);
+            } else if (!shouldAnimate && taskTypeAnimationFrame !== null) {
+                cancelAnimationFrame(taskTypeAnimationFrame);
+                taskTypeAnimationFrame = null;
+                taskTypeTimelines.forEach(timeline => timeline.draw());
+            }
+        }
+
+        taskTypeTimelines.forEach(timeline => {
+            timeline.draw();
+            if ('ResizeObserver' in window) new ResizeObserver(() => {
+                timeline.resize();
+                timeline.draw();
+            }).observe(timeline.canvas.parentElement);
+        });
+        window.addEventListener('resize', () => taskTypeTimelines.forEach(timeline => timeline.resize()));
+        document.addEventListener('visibilitychange', updateTaskTypeAnimation);
+        taskTypeReducedMotion.addEventListener('change', updateTaskTypeAnimation);
+        new IntersectionObserver(entries => {
+            taskTypeIsVisible = entries.some(entry => entry.isIntersecting);
+            updateTaskTypeAnimation();
+        }).observe(taskTypeSection);
+    </script>
+    <script>
+        const airbagColors = {
+            plum: '#2b1728',
+            burgundy: '#712137',
+            burntRed: '#cc4240',
+            coral: '#f08a6a',
+            peach: '#ffc185',
+            white: '#ffffff'
+        };
+        const airbagCanvases = Object.fromEntries(['impact', 'sense', 'decide', 'inflate', 'occupant'].map(stage => {
+            const canvas = document.getElementById(`airbag-anim-${stage}`);
+            return [stage, { canvas, context: canvas.getContext('2d') }];
+        }));
+        const airbagTimeline = { duration: 3500, impact: 500, sense: 800, decide: 1400, inflate: 1800, occupant: 2400, reset: 3200 };
+        const airbagSection = document.getElementById('airbag-deadline');
+        let airbagFrameRequest = null;
+        let airbagIsVisible = false;
+
+        function clearAirbagCanvas(stage) {
+            const context = airbagCanvases[stage].context;
+            context.clearRect(0, 0, 200, 100);
+            return context;
+        }
+
+        function drawAirbagImpact(time) {
+            const context = clearAirbagCanvas('impact');
+            context.fillStyle = airbagColors.plum;
+            context.fillRect(150, 20, 20, 60);
+            const carX = time < airbagTimeline.impact ? 20 + 100 * (time / airbagTimeline.impact) : 120;
+            const shake = time >= airbagTimeline.impact && time < airbagTimeline.impact + 200 ? (Math.random() - 0.5) * 6 : 0;
+            context.fillStyle = airbagColors.burgundy;
+            context.fillRect(carX + shake, 40, 30, 20);
+            context.fillStyle = airbagColors.plum;
+            [carX + 5 + shake, carX + 25 + shake].forEach(x => {
+                context.beginPath();
+                context.arc(x, 60, 5, 0, Math.PI * 2);
+                context.fill();
+            });
+            if (time >= airbagTimeline.impact && time < airbagTimeline.impact + 150) {
+                context.beginPath();
+                context.arc(150 + shake, 50, 8, 0, Math.PI * 2);
+                context.fillStyle = airbagColors.burntRed;
+                context.fill();
+                context.beginPath();
+                context.arc(150 + shake, 50, 4, 0, Math.PI * 2);
+                context.fillStyle = airbagColors.peach;
+                context.fill();
+            }
+        }
+
+        function drawAirbagSense(time) {
+            const context = clearAirbagCanvas('sense');
+            context.strokeStyle = 'rgba(43, 23, 40, 0.2)';
+            context.lineWidth = 1;
+            for (let x = 0; x < 200; x += 20) {
+                context.beginPath();
+                context.moveTo(x, 0);
+                context.lineTo(x, 100);
+                context.stroke();
+            }
+            for (let y = 0; y < 100; y += 20) {
+                context.beginPath();
+                context.moveTo(0, y);
+                context.lineTo(200, y);
+                context.stroke();
+            }
+            context.beginPath();
+            context.strokeStyle = time > airbagTimeline.sense ? airbagColors.burntRed : airbagColors.burgundy;
+            context.lineWidth = 3;
+            const offset = (time * 0.1) % 200;
+            const spikePosition = 200 - ((time - airbagTimeline.sense) * 0.2);
+            for (let x = 0; x < 200; x += 1) {
+                let y = 50 + Math.sin((x + offset) * 0.1) * 3;
+                if (time > airbagTimeline.sense && time < airbagTimeline.reset && Math.abs(x - spikePosition) < 15) y -= Math.cos((x - spikePosition) * 0.1) * 35;
+                if (x === 0) context.moveTo(x, y);
+                else context.lineTo(x, y);
+            }
+            context.stroke();
+        }
+
+        function drawAirbagDecision(time) {
+            const context = clearAirbagCanvas('decide');
+            context.strokeStyle = time > airbagTimeline.sense && time < airbagTimeline.decide ? airbagColors.coral : airbagColors.plum;
+            context.lineWidth = 3;
+            context.beginPath();
+            context.moveTo(0, 50);
+            context.lineTo(60, 50);
+            context.stroke();
+            context.strokeStyle = time >= airbagTimeline.decide ? airbagColors.burntRed : airbagColors.plum;
+            context.beginPath();
+            context.moveTo(140, 50);
+            context.lineTo(200, 50);
+            context.stroke();
+            if (time >= airbagTimeline.decide && time < airbagTimeline.decide + 300) {
+                const packetX = 140 + ((time - airbagTimeline.decide) / 300) * 60;
+                context.beginPath();
+                context.arc(packetX, 50, 4, 0, Math.PI * 2);
+                context.fillStyle = airbagColors.peach;
+                context.fill();
+            }
+            context.fillStyle = airbagColors.plum;
+            context.fillRect(60, 20, 80, 60);
+            for (let pin = 0; pin < 4; pin += 1) {
+                context.fillRect(70 + pin * 16, 10, 6, 10);
+                context.fillRect(70 + pin * 16, 80, 6, 10);
+            }
+            const coreColor = time > airbagTimeline.sense && time < airbagTimeline.decide
+                ? (Math.floor(time / 50) % 2 === 0 ? airbagColors.coral : airbagColors.burgundy)
+                : (time >= airbagTimeline.decide && time < airbagTimeline.reset ? airbagColors.burntRed : airbagColors.peach);
+            context.fillStyle = coreColor;
+            context.fillRect(70, 30, 60, 40);
+            context.fillStyle = airbagColors.plum;
+            context.font = 'bold 14px monospace';
+            context.textAlign = 'center';
+            context.fillText('ECU', 100, 55);
+        }
+
+        function drawAirbagInflation(time) {
+            const context = clearAirbagCanvas('inflate');
+            context.fillStyle = airbagColors.plum;
+            context.fillRect(20, 20, 20, 60);
+            context.beginPath();
+            context.arc(40, 50, 10, 0, Math.PI * 2);
+            context.fill();
+            const progress = Math.max(0, Math.min(1, (time - airbagTimeline.inflate) / 150));
+            const radius = 5 + progress * 45;
+            context.fillStyle = progress > 0 ? airbagColors.white : airbagColors.peach;
+            context.beginPath();
+            context.arc(40 + radius, 50, radius, 0, Math.PI * 2);
+            context.fill();
+            context.strokeStyle = airbagColors.plum;
+            context.lineWidth = 2;
+            context.stroke();
+            if (time > airbagTimeline.inflate && time < airbagTimeline.inflate + 200) {
+                context.strokeStyle = airbagColors.coral;
+                context.beginPath();
+                context.moveTo(40 + radius + 10, 50);
+                context.lineTo(40 + radius + 30, 50);
+                context.moveTo(40 + radius + 5, 20);
+                context.lineTo(40 + radius + 20, 10);
+                context.moveTo(40 + radius + 5, 80);
+                context.lineTo(40 + radius + 20, 90);
+                context.stroke();
+            }
+        }
+
+        function drawAirbagOccupant(time) {
+            const context = clearAirbagCanvas('occupant');
+            let bagX = 90;
+            let bagRadius = 50;
+            let headX = 180;
+            if (time > airbagTimeline.inflate && time <= airbagTimeline.occupant) {
+                const progress = (time - airbagTimeline.inflate) / (airbagTimeline.occupant - airbagTimeline.inflate);
+                headX = 180 - progress * 40;
+            } else if (time > airbagTimeline.occupant) {
+                headX = 140;
+                bagRadius = 48;
+                bagX = 88;
+            }
+            context.fillStyle = airbagColors.white;
+            context.beginPath();
+            context.arc(bagX, 50, bagRadius, 0, Math.PI * 2);
+            context.fill();
+            context.strokeStyle = airbagColors.plum;
+            context.lineWidth = 2;
+            context.stroke();
+            context.fillStyle = airbagColors.plum;
+            context.beginPath();
+            context.arc(headX, 50, 15, 0, Math.PI * 2);
+            context.fill();
+            context.lineWidth = 4;
+            context.beginPath();
+            context.moveTo(headX, 65);
+            context.lineTo(headX + 10, 100);
+            context.stroke();
+            if (time > airbagTimeline.occupant && time < airbagTimeline.occupant + 300) {
+                context.strokeStyle = airbagColors.burntRed;
+                context.lineWidth = 2;
+                context.beginPath();
+                context.arc(headX - 15, 50, 10, Math.PI / 2, Math.PI * 1.5);
+                context.stroke();
+                context.beginPath();
+                context.arc(headX - 15, 50, 18, Math.PI / 2, Math.PI * 1.5);
+                context.stroke();
+            }
+        }
+
+        function drawAirbagStage(stage, time) {
+            if (stage === 'impact') drawAirbagImpact(time);
+            if (stage === 'sense') drawAirbagSense(time);
+            if (stage === 'decide') drawAirbagDecision(time);
+            if (stage === 'inflate') drawAirbagInflation(time);
+            if (stage === 'occupant') drawAirbagOccupant(time);
+        }
+
+        function renderAirbagTimeline(timestamp) {
+            const time = timestamp % airbagTimeline.duration;
+            Object.keys(airbagCanvases).forEach(stage => drawAirbagStage(stage, time));
+            airbagFrameRequest = requestAnimationFrame(renderAirbagTimeline);
+        }
+
+        function updateAirbagAnimation() {
+            const shouldAnimate = airbagIsVisible && !document.hidden && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (shouldAnimate && airbagFrameRequest === null) {
+                airbagFrameRequest = requestAnimationFrame(renderAirbagTimeline);
+            } else if (!shouldAnimate && airbagFrameRequest !== null) {
+                cancelAnimationFrame(airbagFrameRequest);
+                airbagFrameRequest = null;
+            }
+        }
+
+        Object.keys(airbagCanvases).forEach(stage => {
+            drawAirbagStage(stage, 0);
+            if ('ResizeObserver' in window) new ResizeObserver(() => {
+                const currentTime = performance.now() % airbagTimeline.duration;
+                drawAirbagStage(stage, currentTime);
+            }).observe(airbagCanvases[stage].canvas.parentElement);
+        });
+        document.addEventListener('visibilitychange', updateAirbagAnimation);
+        window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', updateAirbagAnimation);
+        new IntersectionObserver(entries => {
+            airbagIsVisible = entries.some(entry => entry.isIntersecting);
+            updateAirbagAnimation();
+        }).observe(airbagSection);
     </script>
 </body>
 </html>

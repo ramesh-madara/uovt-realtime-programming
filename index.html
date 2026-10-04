@@ -135,6 +135,10 @@
                     <svg class="w-5 h-5 shrink-0 text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     <span class="sidebar-label whitespace-nowrap">Event-driven loop</span>
                 </a>
+                <a href="#timing-guarantees" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Real-time guarantees">
+                    <svg class="w-5 h-5 shrink-0 text-lime-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Real-time guarantees</span>
+                </a>
             </nav>
         </aside>
 
@@ -144,6 +148,7 @@
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
                 Data Processing Models
             </h1>
+            <h6>4th October 26</h6>
             <p class="text-lg text-slate-600 leading-relaxed mb-4">
                 Explore the three fundamental paradigms of how computing systems handle data, trigger execution, and manage latency.
             </p>
@@ -161,6 +166,9 @@
                 <div class="mb-6 space-y-2 text-sm">
                     <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency:</span> <span class="text-slate-600">High (Hours/Days)</span></div>
                     <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Throughput:</span> <span class="text-slate-600">High</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency Tolerance:</span> <span class="text-slate-600">High (Hours/Days)</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Throughput Focus:</span> <span class="text-slate-600">High volume efficiency</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Human Role:</span> <span class="text-slate-600">None during execution</span></div>
                 </div>
                 <button onclick="openModal('modal-batch')" class="mt-auto w-full py-3 bg-indigo-50 text-indigo-700 font-semibold rounded-xl hover:bg-indigo-100 transition-colors flex items-center justify-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -178,6 +186,9 @@
                 <div class="mb-6 space-y-2 text-sm">
                     <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency:</span> <span class="text-slate-600">Low (Seconds)</span></div>
                     <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Trigger:</span> <span class="text-slate-600">User Command</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency Tolerance:</span> <span class="text-slate-600">Low (Seconds)</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Throughput Focus:</span> <span class="text-slate-600">Single transaction speed</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Human Role:</span> <span class="text-slate-600">Drives the process actively</span></div>
                 </div>
                 <button onclick="openModal('modal-interactive')" class="mt-auto w-full py-3 bg-blue-50 text-blue-700 font-semibold rounded-xl hover:bg-blue-100 transition-colors flex items-center justify-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -195,6 +206,9 @@
                 <div class="mb-6 space-y-2 text-sm">
                     <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency:</span> <span class="text-slate-600">Ultra-low (Milliseconds)</span></div>
                     <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Trigger:</span> <span class="text-slate-600">Continuous Events</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Latency Tolerance:</span> <span class="text-slate-600">Zero to Ultra-low (Milliseconds)</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Throughput Focus:</span> <span class="text-slate-600">Immediate event reaction</span></div>
+                    <div class="flex items-center gap-2"><span class="font-semibold text-slate-700">Human Role:</span> <span class="text-slate-600">None (Automated system response)</span></div>
                 </div>
                 <button onclick="openModal('modal-realtime')" class="mt-auto w-full py-3 bg-rose-50 text-rose-700 font-semibold rounded-xl hover:bg-rose-100 transition-colors flex items-center justify-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -255,6 +269,38 @@
                         <h3 id="loop-info-title" class="text-xl font-bold text-white mb-2 transition-colors duration-300">Live Data Processing</h3>
                         <p id="loop-info-desc" class="text-slate-400 leading-relaxed">Watch the data flow through the system. Focus or hover over any stage to pause the animation and learn about its role in the event-driven loop.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timing-guarantees" aria-labelledby="timing-title" class="bg-[#17231e] text-white border-y border-[#34483d] py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <h2 id="timing-title" class="text-3xl md:text-5xl font-bold text-slate-100 mb-12 tracking-tight">Real-time does not mean real fast</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-stretch">
+                    <div class="md:col-span-2 bg-[#e2efcc] rounded-2xl p-8 md:p-10 flex flex-col justify-center shadow-inner">
+                        <h3 class="text-3xl md:text-4xl font-bold text-[#88743a] mb-6">Predictable</h3>
+                        <p class="text-slate-800 text-lg md:text-xl leading-relaxed font-medium">A real-time system is one whose timing can be guaranteed, not one that is simply quick.</p>
+                    </div>
+
+                    <ul class="md:col-span-3 flex flex-col justify-center space-y-8" aria-label="Examples of real-time performance">
+                        <li class="flex items-start gap-5 group">
+                            <span class="w-3 h-3 rounded-full bg-[#a3b18a] mt-2 shrink-0 shadow-sm transition-transform group-hover:scale-125" aria-hidden="true"></span>
+                            <p class="text-slate-300 text-lg md:text-xl leading-relaxed"><strong class="font-bold text-white">Slow but real-time</strong> &mdash; A weather station that must log a reading every 10 minutes is a real-time system.</p>
+                        </li>
+                        <li class="flex items-start gap-5 group">
+                            <span class="w-3 h-3 rounded-full bg-[#a3b18a] mt-2 shrink-0 shadow-sm transition-transform group-hover:scale-125" aria-hidden="true"></span>
+                            <p class="text-slate-300 text-lg md:text-xl leading-relaxed"><strong class="font-bold text-white">Fast but not real-time</strong> &mdash; A gaming PC is extremely fast, but Windows cannot guarantee when your program runs.</p>
+                        </li>
+                        <li class="flex items-start gap-5 group">
+                            <span class="w-3 h-3 rounded-full bg-[#a3b18a] mt-2 shrink-0 shadow-sm transition-transform group-hover:scale-125" aria-hidden="true"></span>
+                            <p class="text-slate-300 text-lg md:text-xl leading-relaxed"><strong class="font-bold text-white">Averages hide danger</strong> &mdash; A controller that responds in 1 ms on average but 200 ms once a day will eventually miss a 10 ms deadline.</p>
+                        </li>
+                        <li class="flex items-start gap-5 group">
+                            <span class="w-3 h-3 rounded-full bg-[#a3b18a] mt-2 shrink-0 shadow-sm transition-transform group-hover:scale-125" aria-hidden="true"></span>
+                            <p class="text-slate-300 text-lg md:text-xl leading-relaxed"><strong class="font-bold text-white">Worst case matters</strong> &mdash; Designers must know the longest possible response time.</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>

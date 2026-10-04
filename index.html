@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -307,6 +308,89 @@
         #airbag-deadline .warning-box {
             border: 3px dashed #cc4240;
         }
+        #real-time-systems-everywhere {
+            background-color: #fff5eb;
+            background-image: linear-gradient(to right, rgba(113, 33, 55, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(113, 33, 55, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2b1728;
+            font-family: 'Courier Prime', monospace;
+            -webkit-font-smoothing: antialiased;
+        }
+        #real-time-systems-everywhere h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        #real-time-systems-everywhere .systems-table-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        #real-time-systems-everywhere .systems-table-head {
+            display: none;
+        }
+        #real-time-systems-everywhere .systems-table-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            overflow: hidden;
+            border: 2px solid #712137;
+            border-radius: 4px;
+            background: #ffc185;
+            box-shadow: 4px 4px 0 #2b1728;
+        }
+        #real-time-systems-everywhere .systems-cell {
+            min-width: 0;
+            padding: 1rem;
+        }
+        #real-time-systems-everywhere .systems-mobile-label {
+            display: inline-block;
+            width: 6rem;
+            margin-right: 0.5rem;
+            color: #712137;
+            font-weight: 700;
+        }
+        #real-time-systems-everywhere .systems-canvas-wrap {
+            background-image: repeating-linear-gradient(45deg, rgba(43, 23, 40, 0.04) 0, rgba(43, 23, 40, 0.04) 4px, transparent 4px, transparent 12px);
+            background-color: #fffaf0;
+        }
+        #real-time-systems-everywhere canvas {
+            image-rendering: pixelated;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: 1024px) {
+            #real-time-systems-everywhere .systems-table-container {
+                grid-template-columns: minmax(180px, auto) minmax(0, 1fr) 280px;
+                gap: 0;
+            }
+            #real-time-systems-everywhere .systems-table-head,
+            #real-time-systems-everywhere .systems-table-row {
+                display: contents;
+            }
+            #real-time-systems-everywhere .systems-cell {
+                display: flex;
+                align-items: center;
+                border-right: 2px solid #712137;
+                border-bottom: 2px dashed #712137;
+            }
+            #real-time-systems-everywhere .systems-table-head .systems-cell {
+                background: #712137;
+                color: #fff5eb;
+                font-family: 'Playfair Display', Georgia, serif;
+                font-weight: 700;
+                font-size: 1.125rem;
+                border-bottom: 0;
+            }
+            #real-time-systems-everywhere .systems-table-head .systems-cell:last-child,
+            #real-time-systems-everywhere .systems-cell:nth-child(3n) {
+                border-right: 0;
+            }
+            #real-time-systems-everywhere .systems-table-row:last-child .systems-cell {
+                border-bottom: 0;
+            }
+            #real-time-systems-everywhere .systems-mobile-label {
+                display: none;
+            }
+        }
         @media (min-width: 768px) {
             #airbag-deadline .airbag-scout-table {
                 grid-template-columns: 100px 140px minmax(0, 1fr) 220px;
@@ -433,6 +517,10 @@
                 <a href="#airbag-deadline" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Airbag deadline example">
                     <svg class="w-5 h-5 shrink-0 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01M10.3 3.86l-8.1 14.02A2 2 0 003.93 21h16.14a2 2 0 001.73-3.12l-8.1-14.02a2 2 0 00-3.46 0z"></path></svg>
                     <span class="sidebar-label whitespace-nowrap">Airbag deadline</span>
+                </a>
+                <a href="#real-time-systems-everywhere" class="sidebar-link mt-1 flex items-center gap-3 px-3 py-2.5 rounded-md" title="Real-time systems in the field">
+                    <svg class="w-5 h-5 shrink-0 text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"></path></svg>
+                    <span class="sidebar-label whitespace-nowrap">Systems in the field</span>
                 </a>
             </nav>
         </aside>
@@ -788,6 +876,58 @@
                     <p class="text-[#2b1728] font-bold text-base md:text-lg leading-relaxed text-center">If the decision is 30 ms late, the bag inflates into the passenger's face. A correct decision delivered late can cause injury. <span class="bg-[#cc4240] text-white px-2 py-1 inline-block mt-2 shadow-[2px_2px_0px_#2B1728]">Classic hard real-time.</span></p>
                 </aside>
             </div>
+        </section>
+
+        <section id="real-time-systems-everywhere" aria-labelledby="systems-everywhere-title" class="w-full p-4 md:p-8">
+            <main class="max-w-6xl mx-auto relative z-10 bg-[#ffc185] p-6 md:p-10 border-4 border-[#2b1728] shadow-[4px_4px_0px_#2B1728]">
+                <header class="mb-10 border-b-4 border-double border-[#712137] pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                    <div>
+                        <p class="text-[#cc4240] font-bold uppercase tracking-widest text-xs md:text-sm mb-2">Field Manual Reference</p>
+                        <h2 id="systems-everywhere-title" class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2b1728] tracking-tight leading-none">Real-time systems<br class="hidden sm:block"> are everywhere</h2>
+                    </div>
+                    <blockquote class="font-bold italic text-[#712137] border-l-4 border-[#cc4240] pl-4">"Timing is not just performance,<br>timing is correctness."</blockquote>
+                </header>
+
+                <div class="border-2 border-[#712137] bg-[#ffc185]/40 shadow-[2px_2px_0px_#2B1728] overflow-hidden" role="table" aria-label="Real-time systems across industries">
+                    <div class="systems-table-container systems-table-head font-bold text-lg text-[#fff5eb] bg-[#712137]" role="row">
+                        <div class="systems-cell" role="columnheader">Category</div>
+                        <div class="systems-cell" role="columnheader">Description</div>
+                        <div class="systems-cell justify-center" role="columnheader">Field Visualization</div>
+                    </div>
+                    <div class="systems-table-container" role="rowgroup">
+                        <div class="systems-table-row" role="row">
+                            <div class="systems-cell bg-[#ffc185]/60 gap-4 lg:gap-6" role="rowheader"><span class="w-12 h-12 rounded-full flex items-center justify-center font-black text-xl text-[#2b1728] shrink-0 shadow-sm border-2 border-[#2b1728] bg-[#f08a6a]">1</span><h3 class="font-bold text-2xl text-[#712137]">Automotive</h3></div>
+                            <div class="systems-cell bg-[#ffc185]/20" role="cell"><span class="systems-mobile-label">Description</span><p class="text-[#2b1728] text-sm leading-relaxed font-bold">A modern car contains 70-100+ embedded controllers: engine, ABS, airbag, cruise control, and parking sensors.</p></div>
+                            <div class="systems-cell bg-white justify-center" role="cell"><span class="systems-mobile-label">Visualization</span><div class="systems-canvas-wrap w-full aspect-[2/1] border-2 border-[#2b1728] rounded shadow-[2px_2px_0px_#2B1728] relative overflow-hidden"><canvas id="systems-everywhere-auto" width="240" height="120" aria-label="Animated automotive control system"></canvas></div></div>
+                        </div>
+                        <div class="systems-table-row" role="row">
+                            <div class="systems-cell bg-[#ffc185]/60 gap-4 lg:gap-6" role="rowheader"><span class="w-12 h-12 rounded-full flex items-center justify-center font-black text-xl text-[#2b1728] shrink-0 shadow-sm border-2 border-[#2b1728] bg-[#f08a6a]">2</span><h3 class="font-bold text-2xl text-[#712137]">Aerospace</h3></div>
+                            <div class="systems-cell bg-[#ffc185]/20" role="cell"><span class="systems-mobile-label">Description</span><p class="text-[#2b1728] text-sm leading-relaxed font-bold">Fly-by-wire flight control, autopilot, satellite attitude control, and air traffic control radar.</p></div>
+                            <div class="systems-cell bg-white justify-center" role="cell"><span class="systems-mobile-label">Visualization</span><div class="systems-canvas-wrap w-full aspect-[2/1] border-2 border-[#2b1728] rounded shadow-[2px_2px_0px_#2B1728] relative overflow-hidden"><canvas id="systems-everywhere-aero" width="240" height="120" aria-label="Animated aerospace radar system"></canvas></div></div>
+                        </div>
+                        <div class="systems-table-row" role="row">
+                            <div class="systems-cell bg-[#ffc185]/60 gap-4 lg:gap-6" role="rowheader"><span class="w-12 h-12 rounded-full flex items-center justify-center font-black text-xl text-[#2b1728] shrink-0 shadow-sm border-2 border-[#2b1728] bg-[#f08a6a]">3</span><h3 class="font-bold text-2xl text-[#712137]">Medical</h3></div>
+                            <div class="systems-cell bg-[#ffc185]/20" role="cell"><span class="systems-mobile-label">Description</span><p class="text-[#2b1728] text-sm leading-relaxed font-bold">Pacemakers, insulin pumps, ventilators, and patient monitors with alarms.</p></div>
+                            <div class="systems-cell bg-white justify-center" role="cell"><span class="systems-mobile-label">Visualization</span><div class="systems-canvas-wrap w-full aspect-[2/1] border-2 border-[#2b1728] rounded shadow-[2px_2px_0px_#2B1728] relative overflow-hidden"><canvas id="systems-everywhere-medical" width="240" height="120" aria-label="Animated medical monitor signal"></canvas></div></div>
+                        </div>
+                        <div class="systems-table-row" role="row">
+                            <div class="systems-cell bg-[#ffc185]/60 gap-4 lg:gap-6" role="rowheader"><span class="w-12 h-12 rounded-full flex items-center justify-center font-black text-xl text-[#2b1728] shrink-0 shadow-sm border-2 border-[#2b1728] bg-[#f08a6a]">4</span><h3 class="font-bold text-2xl text-[#712137]">Industrial</h3></div>
+                            <div class="systems-cell bg-[#ffc185]/20" role="cell"><span class="systems-mobile-label">Description</span><p class="text-[#2b1728] text-sm leading-relaxed font-bold">PLCs on factory lines, welding robots, and power-grid protection relays.</p></div>
+                            <div class="systems-cell bg-white justify-center" role="cell"><span class="systems-mobile-label">Visualization</span><div class="systems-canvas-wrap w-full aspect-[2/1] border-2 border-[#2b1728] rounded shadow-[2px_2px_0px_#2B1728] relative overflow-hidden"><canvas id="systems-everywhere-industrial" width="240" height="120" aria-label="Animated industrial automation"></canvas></div></div>
+                        </div>
+                        <div class="systems-table-row" role="row">
+                            <div class="systems-cell bg-[#ffc185]/60 gap-4 lg:gap-6" role="rowheader"><span class="w-12 h-12 rounded-full flex items-center justify-center font-black text-xl text-[#2b1728] shrink-0 shadow-sm border-2 border-[#2b1728] bg-[#f08a6a]">5</span><h3 class="font-bold text-2xl text-[#712137]">Telecom &amp; media</h3></div>
+                            <div class="systems-cell bg-[#ffc185]/20" role="cell"><span class="systems-mobile-label">Description</span><p class="text-[#2b1728] text-sm leading-relaxed font-bold">4G/5G base stations, VoIP calls, live video streaming, and online games.</p></div>
+                            <div class="systems-cell bg-white justify-center" role="cell"><span class="systems-mobile-label">Visualization</span><div class="systems-canvas-wrap w-full aspect-[2/1] border-2 border-[#2b1728] rounded shadow-[2px_2px_0px_#2B1728] relative overflow-hidden"><canvas id="systems-everywhere-telecom" width="240" height="120" aria-label="Animated telecom signal tower"></canvas></div></div>
+                        </div>
+                        <div class="systems-table-row" role="row">
+                            <div class="systems-cell bg-[#ffc185]/60 gap-4 lg:gap-6" role="rowheader"><span class="w-12 h-12 rounded-full flex items-center justify-center font-black text-xl text-[#2b1728] shrink-0 shadow-sm border-2 border-[#2b1728] bg-[#f08a6a]">6</span><h3 class="font-bold text-2xl text-[#712137]">Home &amp; consumer</h3></div>
+                            <div class="systems-cell bg-[#ffc185]/20" role="cell"><span class="systems-mobile-label">Description</span><p class="text-[#2b1728] text-sm leading-relaxed font-bold">Washing machines, microwave ovens, smart thermostats, drones, and smart watches.</p></div>
+                            <div class="systems-cell bg-white justify-center" role="cell"><span class="systems-mobile-label">Visualization</span><div class="systems-canvas-wrap w-full aspect-[2/1] border-2 border-[#2b1728] rounded shadow-[2px_2px_0px_#2B1728] relative overflow-hidden"><canvas id="systems-everywhere-home" width="240" height="120" aria-label="Animated smart home appliance"></canvas></div></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </section>
         </div>
     </div>
@@ -2142,6 +2282,305 @@
             airbagIsVisible = entries.some(entry => entry.isIntersecting);
             updateAirbagAnimation();
         }).observe(airbagSection);
+    </script>
+    <script>
+        const systemsEverywhereColors = {
+            plum: '#2b1728',
+            burgundy: '#712137',
+            burntRed: '#cc4240',
+            coral: '#f08a6a',
+            peach: '#ffc185'
+        };
+        const systemsEverywhereCanvases = Object.fromEntries(['auto', 'aero', 'medical', 'industrial', 'telecom', 'home'].map(category => {
+            const canvas = document.getElementById(`systems-everywhere-${category}`);
+            return [category, { canvas, context: canvas.getContext('2d'), width: canvas.width, height: canvas.height }];
+        }));
+        const systemsEverywhereSection = document.getElementById('real-time-systems-everywhere');
+        const systemsEverywhereBlips = [];
+        let systemsEverywhereMedicalOffset = 0;
+        let systemsEverywhereFrame = null;
+        let systemsEverywhereVisible = false;
+
+        function clearSystemsCanvas(category) {
+            const scene = systemsEverywhereCanvases[category];
+            scene.context.clearRect(0, 0, scene.width, scene.height);
+            return scene;
+        }
+
+        function drawSystemsAuto(time) {
+            const { context: ctx, width: w, height: h } = clearSystemsCanvas('auto');
+            ctx.fillStyle = systemsEverywhereColors.plum;
+            ctx.fillRect(0, h / 2 - 25, w, 50);
+            ctx.strokeStyle = systemsEverywhereColors.peach;
+            ctx.setLineDash([10, 10]);
+            ctx.beginPath();
+            ctx.moveTo(0, h / 2);
+            ctx.lineTo(w, h / 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            const carX = 36;
+            const carY = h / 2 - 15;
+            ctx.fillStyle = systemsEverywhereColors.burgundy;
+            ctx.fillRect(carX, carY, 40, 30);
+            ctx.fillStyle = systemsEverywhereColors.peach;
+            ctx.fillRect(carX + 25, carY + 2, 10, 12);
+            ctx.fillStyle = systemsEverywhereColors.burntRed;
+            ctx.fillRect(carX, carY + 2, 4, 6);
+            ctx.fillRect(carX, carY + 22, 4, 6);
+            const pulse = (time % 1500) / 1500;
+            ctx.strokeStyle = `rgba(240, 138, 106, ${1 - pulse})`;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(carX + 40, h / 2, 20 + pulse * 80, -Math.PI / 4, Math.PI / 4);
+            ctx.stroke();
+            ctx.fillStyle = systemsEverywhereColors.burntRed;
+            ctx.beginPath();
+            ctx.arc(w - 24, h / 2 - 10, 8, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawSystemsAero(time) {
+            const { context: ctx, width: w, height: h } = clearSystemsCanvas('aero');
+            const cx = w / 2;
+            const cy = h / 2;
+            ctx.strokeStyle = systemsEverywhereColors.plum;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 22, 0, Math.PI * 2);
+            ctx.arc(cx, cy, 44, 0, Math.PI * 2);
+            ctx.moveTo(cx - 50, cy);
+            ctx.lineTo(cx + 50, cy);
+            ctx.moveTo(cx, cy - 50);
+            ctx.lineTo(cx, cy + 50);
+            ctx.stroke();
+            const angle = (time * 0.002) % (Math.PI * 2);
+            ctx.strokeStyle = systemsEverywhereColors.burntRed;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(cx + Math.cos(angle) * 48, cy + Math.sin(angle) * 48);
+            ctx.stroke();
+            ctx.fillStyle = 'rgba(204, 66, 64, 0.18)';
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.arc(cx, cy, 46, angle - 0.35, angle);
+            ctx.closePath();
+            ctx.fill();
+            if (Math.random() < 0.025) {
+                const radius = 15 + Math.random() * 30;
+                const blipAngle = Math.random() * Math.PI * 2;
+                systemsEverywhereBlips.push({ x: cx + Math.cos(blipAngle) * radius, y: cy + Math.sin(blipAngle) * radius, born: time });
+            }
+            for (let index = systemsEverywhereBlips.length - 1; index >= 0; index -= 1) {
+                const blip = systemsEverywhereBlips[index];
+                const age = time - blip.born;
+                if (age < 0 || age > 1800) {
+                    systemsEverywhereBlips.splice(index, 1);
+                } else {
+                    ctx.fillStyle = `rgba(240, 138, 106, ${1 - age / 1800})`;
+                    ctx.beginPath();
+                    ctx.arc(blip.x, blip.y, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        function drawSystemsMedical(time) {
+            const { context: ctx, width: w, height: h } = clearSystemsCanvas('medical');
+            ctx.strokeStyle = 'rgba(43, 23, 40, 0.13)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < w; x += 12) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, h);
+                ctx.stroke();
+            }
+            for (let y = 0; y < h; y += 12) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(w, y);
+                ctx.stroke();
+            }
+            const offset = (time * 0.08) % 200;
+            ctx.beginPath();
+            ctx.strokeStyle = systemsEverywhereColors.burntRed;
+            ctx.lineWidth = 2;
+            for (let x = 0; x < w; x += 1) {
+                const phase = (x + offset) % 200;
+                let y = h / 2 + Math.sin((x + offset) * 0.08) * 2;
+                if (phase > 40 && phase < 52) y -= Math.sin(((phase - 40) / 12) * Math.PI) * 10;
+                else if (phase > 78 && phase < 84) y += 5;
+                else if (phase >= 84 && phase < 91) y -= 34;
+                else if (phase >= 91 && phase < 101) y += 13;
+                else if (phase > 132 && phase < 160) y -= Math.sin(((phase - 132) / 28) * Math.PI) * 13;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            systemsEverywhereMedicalOffset = offset;
+        }
+
+        function drawSystemsIndustrial(time) {
+            const { context: ctx, width: w, height: h } = clearSystemsCanvas('industrial');
+            ctx.fillStyle = systemsEverywhereColors.plum;
+            ctx.fillRect(20, h - 28, w - 40, 8);
+            const rollOffset = (time * 0.05) % 26;
+            ctx.fillStyle = systemsEverywhereColors.peach;
+            for (let x = 0; x < w - 40; x += 26) {
+                ctx.beginPath();
+                ctx.arc(33 + x - rollOffset, h - 24, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            const boxX = (time * 0.05) % (w + 36) - 18;
+            ctx.fillStyle = systemsEverywhereColors.coral;
+            ctx.fillRect(boxX, h - 48, 28, 20);
+            ctx.strokeStyle = systemsEverywhereColors.plum;
+            ctx.strokeRect(boxX, h - 48, 28, 20);
+            const baseX = w / 2;
+            const baseY = 18;
+            const angle1 = Math.PI / 2 + Math.sin(time * 0.002) * 0.4;
+            const angle2 = Math.sin(time * 0.003) * 0.6;
+            const joint1X = baseX + Math.cos(angle1) * 34;
+            const joint1Y = baseY + Math.sin(angle1) * 34;
+            const joint2X = joint1X + Math.cos(angle1 + angle2) * 28;
+            const joint2Y = joint1Y + Math.sin(angle1 + angle2) * 28;
+            ctx.fillStyle = systemsEverywhereColors.burgundy;
+            ctx.fillRect(baseX - 14, 0, 28, 18);
+            ctx.strokeStyle = systemsEverywhereColors.plum;
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(baseX, baseY);
+            ctx.lineTo(joint1X, joint1Y);
+            ctx.lineTo(joint2X, joint2Y);
+            ctx.stroke();
+            ctx.fillStyle = systemsEverywhereColors.burntRed;
+            [baseX, joint1X].forEach((x, index) => {
+                ctx.beginPath();
+                ctx.arc(x, index === 0 ? baseY : joint1Y, 5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.fillStyle = systemsEverywhereColors.peach;
+            ctx.fillRect(joint2X - 4, joint2Y, 8, 7);
+        }
+
+        function drawSystemsTelecom(time) {
+            const { context: ctx, width: w, height: h } = clearSystemsCanvas('telecom');
+            const mastX = w / 2;
+            const mastTop = 24;
+            ctx.fillStyle = systemsEverywhereColors.plum;
+            ctx.fillRect(0, h - 8, w, 8);
+            ctx.strokeStyle = systemsEverywhereColors.plum;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(mastX, mastTop);
+            ctx.lineTo(mastX - 18, h - 8);
+            ctx.moveTo(mastX, mastTop);
+            ctx.lineTo(mastX + 18, h - 8);
+            ctx.moveTo(mastX, mastTop);
+            ctx.lineTo(mastX, h - 8);
+            for (let level = 1; level < 5; level += 1) {
+                const y = mastTop + level * 16;
+                const spread = level * 3.5;
+                ctx.moveTo(mastX - spread, y);
+                ctx.lineTo(mastX + spread, y);
+            }
+            ctx.stroke();
+            ctx.fillStyle = systemsEverywhereColors.burgundy;
+            ctx.fillRect(mastX - 4, mastTop - 14, 8, 18);
+            for (let index = 0; index < 3; index += 1) {
+                const radius = (time * 0.05 + index * 30) % 72;
+                const alpha = 1 - radius / 72;
+                ctx.strokeStyle = `rgba(204, 66, 64, ${alpha})`;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(mastX, mastTop - 8, radius, Math.PI, 0);
+                ctx.stroke();
+                ctx.strokeStyle = `rgba(240, 138, 106, ${alpha * 0.55})`;
+                ctx.beginPath();
+                ctx.arc(mastX, mastTop - 8, radius, 0, Math.PI);
+                ctx.stroke();
+            }
+        }
+
+        function drawSystemsHome(time) {
+            const { context: ctx, width: w, height: h } = clearSystemsCanvas('home');
+            const centerX = w / 2;
+            const centerY = h / 2;
+            const size = 62;
+            ctx.fillStyle = systemsEverywhereColors.peach;
+            ctx.fillRect(centerX - size / 2, centerY - size / 2, size, size + 10);
+            ctx.strokeStyle = systemsEverywhereColors.plum;
+            ctx.lineWidth = 3;
+            ctx.strokeRect(centerX - size / 2, centerY - size / 2, size, size + 10);
+            ctx.fillStyle = systemsEverywhereColors.plum;
+            ctx.fillRect(centerX - size / 2, centerY - size / 2, size, 12);
+            ctx.fillStyle = systemsEverywhereColors.coral;
+            ctx.beginPath();
+            ctx.arc(centerX + size / 2 - 10, centerY - size / 2 + 6, 3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = systemsEverywhereColors.burgundy;
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY + 8, 20, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.fillStyle = '#fff5eb';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY + 8, 17, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(centerX, centerY + 8, 17, 0, Math.PI * 2);
+            ctx.clip();
+            const wave = Math.sin(time * 0.005) * 2;
+            ctx.fillStyle = 'rgba(240, 138, 106, 0.6)';
+            ctx.fillRect(centerX - 18, centerY + 10 + wave, 36, 18);
+            ctx.translate(centerX, centerY + 8);
+            ctx.rotate(time * 0.005);
+            ctx.fillStyle = systemsEverywhereColors.burgundy;
+            ctx.beginPath();
+            ctx.arc(0, 0, 11, 0, Math.PI / 2.5);
+            ctx.lineTo(0, 0);
+            ctx.fill();
+            ctx.fillStyle = systemsEverywhereColors.plum;
+            ctx.beginPath();
+            ctx.arc(0, 0, 9, Math.PI, Math.PI + Math.PI / 3);
+            ctx.lineTo(0, 0);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function drawRealTimeSystemsEverywhere(time) {
+            drawSystemsAuto(time);
+            drawSystemsAero(time);
+            drawSystemsMedical(time);
+            drawSystemsIndustrial(time);
+            drawSystemsTelecom(time);
+            drawSystemsHome(time);
+        }
+
+        function animateRealTimeSystemsEverywhere(timestamp) {
+            drawRealTimeSystemsEverywhere(timestamp);
+            systemsEverywhereFrame = requestAnimationFrame(animateRealTimeSystemsEverywhere);
+        }
+
+        function updateRealTimeSystemsAnimation() {
+            const shouldAnimate = systemsEverywhereVisible && !document.hidden && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (shouldAnimate && systemsEverywhereFrame === null) {
+                systemsEverywhereFrame = requestAnimationFrame(animateRealTimeSystemsEverywhere);
+            } else if (!shouldAnimate && systemsEverywhereFrame !== null) {
+                cancelAnimationFrame(systemsEverywhereFrame);
+                systemsEverywhereFrame = null;
+            }
+        }
+
+        drawRealTimeSystemsEverywhere(0);
+        document.addEventListener('visibilitychange', updateRealTimeSystemsAnimation);
+        window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', updateRealTimeSystemsAnimation);
+        new IntersectionObserver(entries => {
+            systemsEverywhereVisible = entries.some(entry => entry.isIntersecting);
+            updateRealTimeSystemsAnimation();
+        }).observe(systemsEverywhereSection);
     </script>
 </body>
 </html>
